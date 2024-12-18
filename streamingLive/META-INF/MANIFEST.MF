@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: StreamingLive
+Bundle-SymbolicName: streamingLive;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.emf.ecore.xmi;bundle-version="2.38.0",
+ univaq.mde2024.project4.musicStreamingService;bundle-version="1.0.0"
+Automatic-Module-Name: streamingLive
+Bundle-RequiredExecutionEnvironment: JavaSE-23
+Import-Package: org.eclipse.emf.ecore.xmi.impl;version="[2.38.0,3.0.0)"

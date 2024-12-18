@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MSS:StreamingService xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:MSS="https://it.univaq.disim.mde.course.project4/MSS" xsi:schemaLocation="https://it.univaq.disim.mde.course.project4/MSS MusicStreamingService.ecore"/>

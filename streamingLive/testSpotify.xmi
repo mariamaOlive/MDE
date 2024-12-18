@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ASCII"?>
+<MSS:StreamingService xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:MSS="https://it.univaq.disim.mde.course.project4/MSS" Name="Spotify">
+  <listeners Name="Mariama" username="Maria" email="mariama@gmail.com" password="password1234" followed_artist="//@Artist.0"/>
+  <Artist Name="Taylor Swift" about="Taylor Alison Swift is an American singer-songwriter." followers="//@listeners.0" img_url="https://i.scdn.co/image/ab6761610000e5ebe672b5f553298dcdccb0e676" num_of_listeners="10000">
+    <owned_albums Name="Lover" duration="1000" img_url="https://i.scdn.co/image/ab6761adfadf5ebe672b5f553298dasdfasdf6">
+      <tracks Name="Cruel Summer" duration="400" lyrics="I love summer..." position="1">
+        <genre>Pop</genre>
+      </tracks>
+    </owned_albums>
+    <owned_solos Name="Lover" duration="300" lyrics="I love u...">
+      <genre>Pop</genre>
+    </owned_solos>
+  </Artist>
+  <podcasts Name="Harry Potter eBook" rating="4.9" img_url="http://harrypotter-ebook.png">
+    <tag>Film</tag>
+    <episodes Name="Secret Chamber" duration="3000" date_created="2024-12-18T14:08:20.200+0100" transcript="Hello, ..." description="Harry potter book"/>
+  </podcasts>
+  <Playlist Name="Favourites" tracks="//@Artist.0/@owned_solos.0" num_of_tracks="2" duration="30000" order="trackLength"/>
+</MSS:StreamingService>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="MusicStreamingService" nsURI="https://it.univaq.disim.mde.course.project4/MSS"
+    nsPrefix="MSS">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StreamingService" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="listeners" ordered="false"
+        upperBound="-1" eType="#//User" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Artist" lowerBound="1"
+        upperBound="-1" eType="#//Artist" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="podcasts" upperBound="-1"
+        eType="#//Podcast" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Playlist" upperBound="-1"
+        eType="#//Playlist" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Composer" eSuperTypes="#//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Artist" eSuperTypes="#//NamedElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="MustHaveAlbumOrSolo"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="MustHaveAlbumOrSolo" value="&#xA;            owned_albums->size()>0 or owned_solos->size()>0"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="about" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="About the artist"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="followers" ordered="false"
+        upperBound="-1" eType="#//User" eOpposite="#//User/followed_artist"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="img_url" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="num_of_listeners" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owned_albums" upperBound="-1"
+        eType="#//Album" containment="true" eOpposite="#//Album/owner"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owned_solos" upperBound="-1"
+        eType="#//SingleTrack" containment="true" eOpposite="#//SingleTrack/owner"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="featured_in" eType="#//MusicTrack"
+        eOpposite="#//MusicTrack/featured_artist"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Track" abstract="true" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MusicTrack" abstract="true" eSuperTypes="#//Track">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="genre" lowerBound="1" upperBound="-1"
+        eType="#//MusicGenre"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lyrics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="featured_artist" upperBound="-1"
+        eType="#//Artist" eOpposite="#//Artist/featured_in"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SingleTrack" eSuperTypes="#//MusicTrack">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//Artist"
+        eOpposite="#//Artist/owned_solos"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Album" eSuperTypes="#//NamedElement">
+    <eOperations name="calculateTotalDuration" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="body" value="tracks->collect(duration)->sum()"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tracks" lowerBound="1"
+        upperBound="-1" eType="#//AlbumTrack" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="derivation" value="tracks->collect(duration)->sum()"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="img_url" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//Artist"
+        eOpposite="#//Artist/owned_albums"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="User" eSuperTypes="#//NamedElement">
+    <eOperations name="getPodcastsByTag" upperBound="-1" eType="#//Podcast">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="body" value="subscribed_podcast->select(p | p.tag->includes(tag))->asOrderedSet()"/>
+      </eAnnotations>
+      <eParameters name="tag" lowerBound="1" eType="#//PodcastTag"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="username" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="email" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="password" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="followed_artist" eType="#//Artist"
+        eOpposite="#//Artist/followers"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owned_playlist" eType="#//Playlist"
+        eOpposite="#//Playlist/owners"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subscribed_podcast" upperBound="-1"
+        eType="#//Podcast" eOpposite="#//Podcast/followers"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Playlist" eSuperTypes="#//NamedElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="PlaylistMustHaveTracks"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="PlaylistMustHaveTracks" value="&#xA;            not tracks->isEmpty()"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tracks" lowerBound="1"
+        upperBound="-1" eType="#//Track"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="num_of_tracks" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" unsettable="true"
+        derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="derivation" value="tracks->size()"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" unsettable="true"
+        derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="order" lowerBound="1" eType="#//Order"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owners" lowerBound="1"
+        upperBound="-1" eType="#//User" eOpposite="#//User/owned_playlist"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Podcast" eSuperTypes="#//NamedElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="PodcastMustHaveEpisodes"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="PodcastMustHaveEpisodes" value="&#xA;    &#x9;&#x9;not episodes->isEmpty()"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" lowerBound="1" upperBound="-1"
+        eType="#//PodcastTag"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rating" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat" defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="img_url" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="episodes" lowerBound="1"
+        upperBound="-1" eType="#//Episodes" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="followers" upperBound="-1"
+        eType="#//User" eOpposite="#//User/subscribed_podcast"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Episodes" eSuperTypes="#//Track">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date_created" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate" defaultValueLiteral="2024-06-17T10:15:30"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transcript" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AlbumTrack" eSuperTypes="#//MusicTrack">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="position" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PodcastTag">
+    <eLiterals name="Film"/>
+    <eLiterals name="Lifestyle"/>
+    <eLiterals name="Education"/>
+    <eLiterals name="politics"/>
+    <eLiterals name="Science"/>
+    <eLiterals name="Technology"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Order">
+    <eLiterals name="Default"/>
+    <eLiterals name="trackLength"/>
+    <eLiterals name="DateAdded"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MusicGenre">
+    <eLiterals name="Pop"/>
+    <eLiterals name="Reggae"/>
+    <eLiterals name="HipHop"/>
+    <eLiterals name="Rock"/>
+    <eLiterals name="Afrobeat"/>
+  </eClassifiers>
+</ecore:EPackage>
