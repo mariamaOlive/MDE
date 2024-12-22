@@ -10,6 +10,7 @@
       email="seydoux@gmail.com"
       password="1234pass"
       followed_artist="//@Artist.1"
+      owned_playlist="//@Playlist.1"
       subscribed_podcast="//@podcasts.0"/>
   <listeners
       Name="Natalie Portman"
@@ -26,7 +27,8 @@
     <owned_solos
         Name="Smells Like Teen Spirit"
         duration="456"
-        lyrics="Load up on guns, bring your friends...">
+        lyrics="Load up on guns, bring your friends..."
+        featured_artist="//@Artist.1">
       <genre>Afrobeat</genre>
     </owned_solos>
   </Artist>
@@ -34,7 +36,8 @@
       about="The Smashing Pumpkins is an American alternative rock band from Chicago."
       followers="//@listeners.0"
       img_url="https://i.scdn.co/image/ab67616d0000b2737c97cac15be277c0def9eca4"
-      num_of_listeners="40">
+      num_of_listeners="40"
+      featured_in="//@Artist.0/@owned_solos.0">
     <owned_albums
         Name="Siamese Dream"
         duration="350"
@@ -55,7 +58,7 @@
       </tracks>
     </owned_albums>
     <owned_solos
-        Name="Drawn"
+        Name="Drown"
         lyrics="No matter where you are...">
       <genre>Rock</genre>
     </owned_solos>
@@ -83,4 +86,10 @@
       num_of_tracks="3"
       duration="504"
       owners="//@listeners.1"/>
+  <Playlist
+      Name="Songs I hate"
+      tracks="//@Artist.0/@owned_solos.0 //@Artist.1/@owned_albums.0/@tracks.0"
+      num_of_tracks="2"
+      duration="500"
+      owners="//@listeners.0"/>
 </MSS:StreamingService>
