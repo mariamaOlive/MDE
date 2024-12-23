@@ -76,8 +76,8 @@ operation getPodcastsByTag(tag : PodcastTag[1]) : Podcast[*|1] { ordered } {
 ### Derived Fields
 1. Duration of an Album:
 ```ocl
-property Album::duration : ecore::EInt { derived } {
-  derive: tracks->collect(duration)->sum();
+attribute num_of_tracks : ecore::EInt[1] { derived unsettable } {
+	derivation : tracks->size();
 }
 ```
 2. Total number of tracks in a Playlist:
