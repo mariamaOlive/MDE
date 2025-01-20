@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="MusicStore" nsURI="https://univaq.mde2024.project5.musicStore/MS"
+    nsPrefix="MS">
+  <eClassifiers xsi:type="ecore:EClass" name="Customer" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="email" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transactions" lowerBound="1"
+        upperBound="-1" eType="#//Transaction" eOpposite="#//Transaction/customer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="wishlist" upperBound="-1"
+        eType="#//Wishlist" eOpposite="#//Wishlist/owner"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Artist" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="producedItems" upperBound="-1"
+        eType="#//MusicItem" eOpposite="#//MusicItem/artist"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MusicItem" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" unique="false" lowerBound="1"
+        eType="#//ItemType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="artist" lowerBound="1"
+        upperBound="-1" eType="#//Artist" eOpposite="#//Artist/producedItems"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Wishlist" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="item" lowerBound="1" upperBound="-1"
+        eType="#//MusicItem"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//Customer"
+        eOpposite="#//Customer/wishlist"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Transaction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//TransactionType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="customer" lowerBound="1"
+        eType="#//Customer" eOpposite="#//Customer/transactions"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="musicItem" lowerBound="1"
+        upperBound="-1" eType="#//MusicItem"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ItemType">
+    <eLiterals name="Album"/>
+    <eLiterals name="Audiobook"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TransactionType">
+    <eLiterals name="Purchase"/>
+    <eLiterals name="Borrow"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MusicStore" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inventory" lowerBound="1"
+        upperBound="-1" eType="#//MusicItem" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="customers" upperBound="-1"
+        eType="#//Customer" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transactions" upperBound="-1"
+        eType="#//Transaction" containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

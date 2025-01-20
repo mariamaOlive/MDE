@@ -1,0 +1,16 @@
+-- @path STORE=/univaq.mde2024.project5.musicStore/model/MusicStore.ecore
+-- @path STREAMING=/univaq.mde2024.project4.musicStreamingService/model/MusicStreamingService.ecore
+
+module transformer;
+create OUT : STORE from IN : STREAMING;
+
+rule Streaming2Store{
+	from s : STREAMING!StreamingService
+	to t : STORE!MusicStore (
+			name <- s.Name
+	
+			
+			
+			
+	)
+}
