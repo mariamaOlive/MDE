@@ -4,13 +4,92 @@
 module transformer;
 create OUT : STORE from IN : STREAMING;
 
-rule Streaming2Store{
-	from s : STREAMING!StreamingService
-	to t : STORE!MusicStore (
-			name <- s.Name
-	
-			
-			
-			
-	)
+
+-- Rule to transform StreamingService into MusicStore
+rule Streaming2Store {
+    from
+        s : STREAMING!StreamingService
+    to
+        t : STORE!MusicStore (
+            name <- s.Name,
+            inventory <- s.Artist->collect(a | a.owned_albums->union(a.owned_solos)->flatten())->flatten()->collect(i | thisModule.createMusicItem(i)),
+            customers <- s.listeners->collect(l | thisModule.createCustomer(l))
+        )
 }
+
+-- Rule to transform Artist into Artist
+rule ArtistToArtist {
+    from
+        a : STREAMING!Artist
+    to
+        t : STORE!Artist (
+            name <- a.Name,
+            producedItems <- a.owned_albums->union(a.owned_solos)->flatten()->collect(i | thisModule.createMusicItem(i))
+        )
+}
+
+-- Rule to transform Album into MusicItem
+rule AlbumToMusicItem {
+    from
+        alb : STREAMING!Album
+    to
+        mi : STORE!MusicItem (
+            name <- alb.Name,
+            type <- #Album,
+            artist <- alb.owner
+        )
+}
+
+-- Rule to transform SingleTrack into MusicItem
+rule SingleTrackToMusicItem {
+    from
+        track : STREAMING!SingleTrack
+    to
+        mi : STORE!MusicItem (
+            name <- track.Name,
+            type <- #Album, -- Assuming single tracks are categorized as Albums
+            artist <- track.owner
+        )
+}
+
+-- Rule to transform User into Customer
+rule UserToCustomer {
+    from
+        u : STREAMING!User
+    to
+        c : STORE!Customer (
+            name <- u.username,
+            email <- u.email,
+            wishlist <- u.owned_playlist->collect(p | thisModule.createWishlist(p))
+        )
+}
+
+-- Rule to transform Playlist into Wishlist
+rule PlaylistToWishlist {
+    from
+        p : STREAMING!Playlist
+    to
+        w : STORE!Wishlist (
+            name <- p.Name,
+            item <- p.tracks->collect(t | thisModule.createMusicItem(t)),
+            owner <- p.owners->first() -- Assuming playlists have single owners
+        )
+}
+
+-- Helper to create MusicItem from Track
+helper context STREAMING!Track def: createMusicItem() : STORE!MusicItem =
+    if self.oclIsKindOf(STREAMING!Album) then
+        thisModule.AlbumToMusicItem(self.oclAsType(STREAMING!Album))
+    else 
+        if self.oclIsKindOf(STREAMING!SingleTrack) then
+            thisModule.SingleTrackToMusicItem(self.oclAsType(STREAMING!SingleTrack))
+        else
+            let undefinedItem : STORE!MusicItem = STORE!MusicItem.newInstance() in
+            undefinedItem.name <- 'Undefined';
+            undefinedItem
+        endif
+    endif;
+
+-- Helper to create Wishlist
+helper context STREAMING!Playlist def: createWishlist() : STORE!Wishlist =
+    thisModule.PlaylistToWishlist(self);
