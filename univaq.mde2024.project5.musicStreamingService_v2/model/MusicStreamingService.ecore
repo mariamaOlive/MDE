@@ -156,9 +156,6 @@
     <eLiterals name="politics"/>
     <eLiterals name="Science"/>
     <eLiterals name="Technology"/>
-    <eLiterals name="Business"/>
-    <eLiterals name="Entertainment"/>
-    <eLiterals name="Travel"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Order">
     <eLiterals name="Default"/>
@@ -170,9 +167,7 @@
     <eLiterals name="HipHop"/>
     <eLiterals name="Rock"/>
     <eLiterals name="Afrobeat"/>
-    <eLiterals name="Jazz" literal=""/>
-    <eLiterals name="Classical"/>
-    <eLiterals name="Country" literal="Country"/>
+    <eLiterals name="Pop"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StudioAlbum" eSuperTypes="#//Album">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="recordingStudio" lowerBound="1"

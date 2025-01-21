@@ -4,7 +4,7 @@
   <semanticResources>model/StreamingService.xmi</semanticResources>
   <semanticResources>model/SpotifyLive.genmodel</semanticResources>
   <semanticResources>model/StreamingService1.xmi</semanticResources>
-  <semanticResources>model/Spotify_v2.xmi</semanticResources>
+  <semanticResources>model/Spotify_v3.xmi</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" uid="_fUAzkLyAEe-ur6cyiTFJGg">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
   </ownedViews>

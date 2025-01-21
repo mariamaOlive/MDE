@@ -5,7 +5,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:MSS="https://it.univaq.disim.mde.course.project5/MSS"
     xsi:schemaLocation="https://it.univaq.disim.mde.course.project5/MSS /univaq.mde2024.project5.musicStreamingService_v2/model/MusicStreamingService.ecore"
-    Name="Spotify 2">
+    Name="Spotify 3">
   <listeners
       Name="Mariama Oliveira"
       username="mari"
@@ -40,7 +40,7 @@
           Name="The Man"
           duration="300"
           lyrics="Bla Bla Bla">
-        <genre>Country</genre>
+        <genre>Rock</genre>
       </tracks>
       <tracks
           Name="Champange Problem"
@@ -98,7 +98,7 @@
   <podcasts
       Name="Travel in Italy"
       followers="//@listeners.0">
-    <category>Travel</category>
+    <category>Film</category>
     <episodes
         Name="ep1"
         description="xczxczCZ"/>

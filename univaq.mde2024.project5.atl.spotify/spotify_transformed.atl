@@ -24,6 +24,7 @@ rule ArtistToArtist {
         src : MM!Artist
     to
         tgt : MM1!Artist (
+        	Name <- src.Name,
             about <- src.about,
             followers <- src.followers,
             img_url <- src.img_url,
@@ -43,8 +44,8 @@ rule SingleTrackToSingleTrack {
     to
         tgt : MM1!SingleTrack (
             Name <- src.Name,
+			genre <- src.genre,
             duration <- src.duration,
-            genre <- src.genre,
             lyrics <- src.lyrics,
             featured_artist <- src.featured_artist,
             owner <- src.owner
@@ -56,22 +57,22 @@ rule AlbumToStudioAlbumOrLiveAlbum {
     from
         src : MM!Album
     to
-        studioAlbum : MM1!StudioAlbum (
+        liveAlbum : MM1!LiveAlbum (
+            Name <- src.Name ,
+            tracks <- src.tracks,
+            duration <- src.duration,
+            img_url <- src.img_url,
+            owner <- src.owner,
+            eventLocation <- 'Unknown Location' -- Default value
+        ),studioAlbum : MM1!StudioAlbum (
             Name <- src.Name,
             tracks <- src.tracks,
             duration <- src.duration,
             img_url <- src.img_url,
             owner <- src.owner,
             recordingStudio <- 'Unknown Studio' -- Default value
-        ),
-        liveAlbum : MM1!LiveAlbum (
-            Name <- src.Name,
-            tracks <- src.tracks,
-            duration <- src.duration,
-            img_url <- src.img_url,
-            owner <- src.owner,
-            eventLocation <- 'Unknown Location' -- Default value
         )
+        
 }
 
 -- Rule for User
@@ -80,6 +81,7 @@ rule UserToUser {
         src : MM!User
     to
         tgt : MM1!User (
+        	Name <- src. Name,
             username <- src.username,
             email <- src.email,
             password <- src.password,
@@ -141,20 +143,12 @@ rule AlbumTrackToAlbumTrack {
         tgt : MM1!AlbumTrack (
             Name <- src.Name,
             duration <- src.duration,
-            genre <- src.genre,
+			genre <- src.genre,
             lyrics <- src.lyrics,
             featured_artist <- src.featured_artist,
             position <- src.position
         )
 }
 
-rule MusicGenreMapping {
-    from
-        src : MM!Track -- Assuming Track references MusicGenre
-    to
-        tgt : MM1!Track (
-            genre <- if src.genre = #Pop then #Jazz
-                     else src.genre endif
-        )
-}
+
 
