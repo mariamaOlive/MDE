@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/univaq.mde2024.project4.musicStreamingService/src"
+    modelPluginID="univaq.mde2024.project4.musicStreamingService" modelName="SpotifyLive"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="22.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>MusicStreamingService.ecore</foreignModel>
+  <genPackages prefix="MusicStreamingService" disposableProviderFactory="true" ecorePackage="MusicStreamingService.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="MusicStreamingService.ecore#//PodcastTag">
+      <genEnumLiterals ecoreEnumLiteral="MusicStreamingService.ecore#//PodcastTag/Film"/>
+      <genEnumLiterals ecoreEnumLiteral="MusicStreamingService.ecore#//PodcastTag/Lifestyle"/>
+      <genEnumLiterals ecoreEnumLiteral="MusicStreamingService.ecore#//PodcastTag/Education"/>
+      <genEnumLiterals ecoreEnumLiteral="MusicStreamingService.ecore#//PodcastTag/politics"/>
+      <genEnumLiterals ecoreEnumLiteral="MusicStreamingService.ecore#//PodcastTag/Science"/>
+      <genEnumLiterals ecoreEnumLiteral="MusicStreamingService.ecore#//PodcastTag/Technology"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="MusicStreamingService.ecore#//Order">
+      <genEnumLiterals ecoreEnumLiteral="MusicStreamingService.ecore#//Order/Default"/>
+      <genEnumLiterals ecoreEnumLiteral="MusicStreamingService.ecore#//Order/trackLength"/>
+      <genEnumLiterals ecoreEnumLiteral="MusicStreamingService.ecore#//Order/DateAdded"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="MusicStreamingService.ecore#//MusicGenre">
+      <genEnumLiterals ecoreEnumLiteral="MusicStreamingService.ecore#//MusicGenre/Pop"/>
+      <genEnumLiterals ecoreEnumLiteral="MusicStreamingService.ecore#//MusicGenre/Reggae"/>
+      <genEnumLiterals ecoreEnumLiteral="MusicStreamingService.ecore#//MusicGenre/HipHop"/>
+      <genEnumLiterals ecoreEnumLiteral="MusicStreamingService.ecore#//MusicGenre/Rock"/>
+      <genEnumLiterals ecoreEnumLiteral="MusicStreamingService.ecore#//MusicGenre/Afrobeat"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="MusicStreamingService.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MusicStreamingService.ecore#//NamedElement/Name"/>
+    </genClasses>
+    <genClasses ecoreClass="MusicStreamingService.ecore#//StreamingService">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MusicStreamingService.ecore#//StreamingService/listeners"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MusicStreamingService.ecore#//StreamingService/Artist"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MusicStreamingService.ecore#//StreamingService/podcasts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MusicStreamingService.ecore#//StreamingService/Playlist"/>
+    </genClasses>
+    <genClasses ecoreClass="MusicStreamingService.ecore#//Composer"/>
+    <genClasses ecoreClass="MusicStreamingService.ecore#//Artist">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MusicStreamingService.ecore#//Artist/about"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MusicStreamingService.ecore#//Artist/followers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MusicStreamingService.ecore#//Artist/img_url"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MusicStreamingService.ecore#//Artist/num_of_listeners"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MusicStreamingService.ecore#//Artist/owned_albums"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MusicStreamingService.ecore#//Artist/owned_solos"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MusicStreamingService.ecore#//Artist/featured_in"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="MusicStreamingService.ecore#//Track">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MusicStreamingService.ecore#//Track/duration"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="MusicStreamingService.ecore#//MusicTrack">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MusicStreamingService.ecore#//MusicTrack/genre"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MusicStreamingService.ecore#//MusicTrack/lyrics"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MusicStreamingService.ecore#//MusicTrack/featured_artist"/>
+    </genClasses>
+    <genClasses ecoreClass="MusicStreamingService.ecore#//SingleTrack">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference MusicStreamingService.ecore#//SingleTrack/owner"/>
+    </genClasses>
+    <genClasses ecoreClass="MusicStreamingService.ecore#//Album">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MusicStreamingService.ecore#//Album/tracks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MusicStreamingService.ecore#//Album/duration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MusicStreamingService.ecore#//Album/img_url"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference MusicStreamingService.ecore#//Album/owner"/>
+    </genClasses>
+    <genClasses ecoreClass="MusicStreamingService.ecore#//User">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MusicStreamingService.ecore#//User/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MusicStreamingService.ecore#//User/email"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MusicStreamingService.ecore#//User/password"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MusicStreamingService.ecore#//User/followed_artist"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MusicStreamingService.ecore#//User/owned_playlist"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MusicStreamingService.ecore#//User/subscribed_podcast"/>
+    </genClasses>
+    <genClasses ecoreClass="MusicStreamingService.ecore#//Playlist">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MusicStreamingService.ecore#//Playlist/tracks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MusicStreamingService.ecore#//Playlist/num_of_tracks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MusicStreamingService.ecore#//Playlist/duration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MusicStreamingService.ecore#//Playlist/order"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MusicStreamingService.ecore#//Playlist/owners"/>
+    </genClasses>
+    <genClasses ecoreClass="MusicStreamingService.ecore#//Podcast">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MusicStreamingService.ecore#//Podcast/tag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MusicStreamingService.ecore#//Podcast/rating"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MusicStreamingService.ecore#//Podcast/img_url"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MusicStreamingService.ecore#//Podcast/episodes"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MusicStreamingService.ecore#//Podcast/followers"/>
+    </genClasses>
+    <genClasses ecoreClass="MusicStreamingService.ecore#//Episodes">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MusicStreamingService.ecore#//Episodes/date_created"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MusicStreamingService.ecore#//Episodes/transcript"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MusicStreamingService.ecore#//Episodes/description"/>
+    </genClasses>
+    <genClasses ecoreClass="MusicStreamingService.ecore#//AlbumTrack">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MusicStreamingService.ecore#//AlbumTrack/position"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

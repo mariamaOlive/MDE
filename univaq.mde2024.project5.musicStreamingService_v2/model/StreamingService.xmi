@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MSS:StreamingService
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:MSS="https://it.univaq.disim.mde.course.project4/MSS"
+    Name="Spotify">
+  <listeners
+      Name="Mariama Oliveira"
+      username="mari"
+      email="mariama@gmail.com"
+      password="password"
+      followed_artist="//@Artist.0"
+      owned_playlist="//@Playlist.0"
+      subscribed_podcast="//@podcasts.0 //@podcasts.1 //@podcasts.2"/>
+  <listeners
+      Name="Thinakone Louangdy"
+      username="Toto"
+      email="toto@gmail.com"
+      password="passwordMiauw"
+      followed_artist="//@Artist.1"
+      subscribed_podcast="//@podcasts.0"/>
+  <listeners
+      Name="Motunrayo Ibiyo"
+      username="Mo"
+      email="motunrayo@gmail.com"
+      password="MIMIMIMI"
+      followed_artist="//@Artist.1"
+      owned_playlist="//@Playlist.0"
+      subscribed_podcast="//@podcasts.0"/>
+  <Artist Name="Taylor Swift"
+      about="Taylor Alison Swift is an American singer-songwriter. Known for her biographical songwriting, artistic reinventions, and cultural impact, Swift is a leading figure in popular music and the subject of widespread media coverage. "
+      followers="//@listeners.0"
+      img_url="https://i.scdn.co/image/ab6761610000e5ebe672b5f553298dcdccb0e676">
+    <owned_albums
+        Name="Lover"
+        duration="0"
+        img_url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpr6lEGowp8KNESG_FIw9EzDS4uB8viZfa-A&amp;s">
+      <tracks
+          Name="Lover"
+          duration="100"
+          lyrics="lalalalala"
+          position="1">
+        <genre>Pop</genre>
+      </tracks>
+      <tracks
+          Name="The Man"
+          duration="200"
+          lyrics="Lalalalala"
+          featured_artist="//@Artist.1"
+          position="2">
+        <genre>HipHop</genre>
+      </tracks>
+      <tracks
+          Name="Cruel Summer"
+          duration="50"
+          lyrics="hey"
+          position="3">
+        <genre>Pop</genre>
+      </tracks>
+    </owned_albums>
+    <owned_solos
+        Name="Lover"
+        duration="300"
+        lyrics="La la la la">
+      <genre>Pop</genre>
+      <genre>Rock</genre>
+    </owned_solos>
+  </Artist>
+  <Artist Name="Joji"
+      about="George Kusunoki Miller, known professionally as Joji and formerly as Filthy Frank and Pink Guy, is a Japanese-Australian comedian, singer-songwriter, rapper, and record producer. Miller's music has been described as a mix between R&amp;B, lo-fi, and trip hop. "
+      followers="//@listeners.1 //@listeners.2"
+      img_url="https://i.scdn.co/image/ab67616d0000b2738da6404284573219a9b1e2f4"
+      featured_in="//@Artist.0/@owned_albums.0/@tracks.1">
+    <owned_solos
+        Name="Die for u"
+        duration="300"
+        lyrics="I would die for you">
+      <genre>Reggae</genre>
+    </owned_solos>
+  </Artist>
+  <podcasts
+      Name="Call Her Daddy"
+      rating="4.1"
+      img_url="https://i.scdn.co/image/ab6765630000ba8a9ed5402aa95d51712d9fc458"
+      followers="//@listeners.0 //@listeners.1 //@listeners.2">
+    <tag>Lifestyle</tag>
+    <episodes
+        Name="Divorced at 29"
+        duration="600"
+        transcript="Hello today..."
+        description="How is to be divorce at 29"/>
+  </podcasts>
+  <podcasts
+      Name="Test1"
+      followers="//@listeners.0">
+    <tag>politics</tag>
+    <episodes
+        Name="ep1"
+        description="xzZcz"/>
+  </podcasts>
+  <podcasts
+      Name="Test2"
+      followers="//@listeners.0">
+    <tag>politics</tag>
+    <episodes
+        Name="ep1"
+        description="xczxczCZ"/>
+  </podcasts>
+  <Playlist
+      Name="My Favourites &lt;3"
+      tracks="//@Artist.0/@owned_solos.0 //@Artist.0/@owned_albums.0/@tracks.1 //@podcasts.0/@episodes.0 //@podcasts.2/@episodes.0"
+      num_of_tracks="3"
+      duration="3000"
+      order="trackLength"
+      owners="//@listeners.0 //@listeners.2"/>
+</MSS:StreamingService>

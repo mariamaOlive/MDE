@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MSS:StreamingService
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:MSS="https://it.univaq.disim.mde.course.project4/MSS"
+    Name="Apple Music">
+  <listeners
+      Name="Lea Seydoux"
+      username="lea"
+      email="seydoux@gmail.com"
+      password="1234pass"
+      followed_artist="//@Artist.1"
+      owned_playlist="//@Playlist.1"
+      subscribed_podcast="//@podcasts.0"/>
+  <listeners
+      Name="Natalie Portman"
+      username="Nati"
+      email="nati.portman@yahoo.com"
+      password="portman1357"
+      owned_playlist="//@Playlist.0"
+      subscribed_podcast="//@podcasts.0"/>
+  <Artist Name="Nirvana"
+      about="Nirvana was an American rock band formed in Aberdeen, Washington, in 1987."
+      img_url="https://i.scdn.co/image/a4e10b79a642e9891383448cbf37d7266a6883d6"
+      num_of_listeners="10000"
+      featured_in="//@Artist.1/@owned_albums.0/@tracks.0">
+    <owned_solos
+        Name="Smells Like Teen Spirit"
+        duration="456"
+        lyrics="Load up on guns, bring your friends..."
+        featured_artist="//@Artist.1">
+      <genre>Afrobeat</genre>
+    </owned_solos>
+  </Artist>
+  <Artist Name="Smashing Pumpkins"
+      about="The Smashing Pumpkins is an American alternative rock band from Chicago."
+      followers="//@listeners.0"
+      img_url="https://i.scdn.co/image/ab67616d0000b2737c97cac15be277c0def9eca4"
+      num_of_listeners="40"
+      featured_in="//@Artist.0/@owned_solos.0">
+    <owned_albums
+        Name="Siamese Dream"
+        duration="350"
+        img_url="https://i.scdn.co/image/ab67616d0000b2732d6d46ea0c000c11083f2158">
+      <tracks
+          Name="Cherub Rock"
+          duration="40"
+          lyrics="La la la..."
+          featured_artist="//@Artist.0"
+          position="1">
+        <genre>Rock</genre>
+      </tracks>
+      <tracks
+          Name="Today"
+          lyrics="Today is the greatest..."
+          position="2">
+        <genre>Rock</genre>
+      </tracks>
+    </owned_albums>
+    <owned_solos
+        Name="Drown"
+        lyrics="No matter where you are...">
+      <genre>Rock</genre>
+    </owned_solos>
+  </Artist>
+  <podcasts
+      Name="Dr. Death"
+      rating="4.7"
+      img_url="https://i.scdn.co/image/ab6765630000ba8a918caa342b7d7aa6f910b13a"
+      followers="//@listeners.0 //@listeners.1">
+    <tag>Lifestyle</tag>
+    <episodes
+        Name="Dr. Duntch"
+        duration="400"
+        transcript="Today we gonna talk..."
+        description="From Wondery, the new season of Dr. Death: Bad Magic is a story of miraculous cures, magic and murder. "/>
+    <episodes
+        Name="Dr. Fata"
+        duration="500"
+        transcript="Bla bla..."
+        description="If someone ..."/>
+  </podcasts>
+  <Playlist
+      Name="Rocks!"
+      tracks="//@podcasts.0/@episodes.0 //@Artist.0/@owned_solos.0"
+      num_of_tracks="3"
+      duration="504"
+      owners="//@listeners.1"/>
+  <Playlist
+      Name="Songs I hate"
+      tracks="//@Artist.0/@owned_solos.0 //@Artist.1/@owned_albums.0/@tracks.0"
+      num_of_tracks="2"
+      duration="500"
+      owners="//@listeners.0"/>
+</MSS:StreamingService>
