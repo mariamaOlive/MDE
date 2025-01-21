@@ -51,29 +51,45 @@ rule SingleTrackToSingleTrack {
             owner <- src.owner
         )
 }
-
 -- Rule for Album
 rule AlbumToStudioAlbumOrLiveAlbum {
     from
         src : MM!Album
     to
         liveAlbum : MM1!LiveAlbum (
-            Name <- src.Name ,
-            tracks <- src.tracks,
+            Name <- src.Name,
+            tracks <- src.tracks->collect(t | thisModule.AlbumTrackToLiveAlbumTrack(t)), -- Directly invoke the lazy rule
             duration <- src.duration,
             img_url <- src.img_url,
             owner <- src.owner,
             eventLocation <- 'Unknown Location' -- Default value
-        ),studioAlbum : MM1!StudioAlbum (
+        ),
+        studioAlbum : MM1!StudioAlbum (
             Name <- src.Name,
-            tracks <- src.tracks,
+            tracks <- src.tracks, -- Keep original tracks for studio album
             duration <- src.duration,
             img_url <- src.img_url,
             owner <- src.owner,
             recordingStudio <- 'Unknown Studio' -- Default value
         )
-        
 }
+
+
+-- Lazy rule for transforming AlbumTrack to LiveAlbumTrack
+lazy rule AlbumTrackToLiveAlbumTrack {
+    from
+        src : MM!AlbumTrack
+    to
+        tgt : MM1!AlbumTrack (
+            Name <- src.Name + ' Live', -- Append " Live"
+            duration <- src.duration,
+            genre <- src.genre,
+            lyrics <- src.lyrics,
+            featured_artist <- src.featured_artist,
+            position <- src.position
+        )
+}
+
 
 -- Rule for User
 rule UserToUser {
