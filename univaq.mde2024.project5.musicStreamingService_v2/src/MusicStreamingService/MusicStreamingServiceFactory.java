@@ -31,15 +31,6 @@ public interface MusicStreamingServiceFactory extends EFactory {
 	StreamingService createStreamingService();
 
 	/**
-	 * Returns a new object of class '<em>Composer</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Composer</em>'.
-	 * @generated
-	 */
-	Composer createComposer();
-
-	/**
 	 * Returns a new object of class '<em>Artist</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -56,15 +47,6 @@ public interface MusicStreamingServiceFactory extends EFactory {
 	 * @generated
 	 */
 	SingleTrack createSingleTrack();
-
-	/**
-	 * Returns a new object of class '<em>Album</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Album</em>'.
-	 * @generated
-	 */
-	Album createAlbum();
 
 	/**
 	 * Returns a new object of class '<em>User</em>'.
@@ -94,13 +76,13 @@ public interface MusicStreamingServiceFactory extends EFactory {
 	Podcast createPodcast();
 
 	/**
-	 * Returns a new object of class '<em>Episodes</em>'.
+	 * Returns a new object of class '<em>Podcast Episode</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Episodes</em>'.
+	 * @return a new object of class '<em>Podcast Episode</em>'.
 	 * @generated
 	 */
-	Episodes createEpisodes();
+	PodcastEpisode createPodcastEpisode();
 
 	/**
 	 * Returns a new object of class '<em>Album Track</em>'.
@@ -110,6 +92,33 @@ public interface MusicStreamingServiceFactory extends EFactory {
 	 * @generated
 	 */
 	AlbumTrack createAlbumTrack();
+
+	/**
+	 * Returns a new object of class '<em>Studio Album</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Studio Album</em>'.
+	 * @generated
+	 */
+	StudioAlbum createStudioAlbum();
+
+	/**
+	 * Returns a new object of class '<em>Live Album</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Live Album</em>'.
+	 * @generated
+	 */
+	LiveAlbum createLiveAlbum();
+
+	/**
+	 * Returns a new object of class '<em>Concert</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Concert</em>'.
+	 * @generated
+	 */
+	Concert createConcert();
 
 	/**
 	 * Returns the package supported by this factory.

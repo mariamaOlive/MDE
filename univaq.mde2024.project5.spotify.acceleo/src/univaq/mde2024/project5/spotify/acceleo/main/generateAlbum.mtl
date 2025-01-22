@@ -1,0 +1,51 @@
+[module generateAlbum('https://it.univaq.disim.mde.course.project5/MSS')]
+
+[template public generateAlbum(aStreamingService : StreamingService)]
+<html>
+<head>
+    <title>Albums - [aStreamingService.Name/]</title>
+</head>
+<body>
+    <h1>Albums in [aStreamingService.Name/]</h1>
+    <ul>
+        [for (artist : Artist | aStreamingService.Artist)]
+            [for (album : Album | artist.owned_albums)]
+                <li>
+                    <b>Album Name:</b> [album.Name/]<br/>
+                    <b>Owner:</b> [artist.Name/]<br/>
+                    [if (album.img_url <> null and album.img_url <> '')]
+                        <img src="[album.img_url/]" alt="[album.Name/]" width="100"/><br/>
+                    [/if]
+                    <b>Total Duration:</b> [album.duration/]<br/>
+                    [if (album.oclIsTypeOf(StudioAlbum))]
+                        <b>Recording Studio:</b> [album.oclAsType(StudioAlbum).recordingStudio/]<br/>
+                    [/if]
+                    [if (album.oclIsTypeOf(LiveAlbum))]
+                        <b>Event Location:</b> [album.oclAsType(LiveAlbum).eventLocation/]<br/>
+                    [/if]
+                    <b>Tracks:</b>
+                    <ul>
+                        [for (track : AlbumTrack | album.tracks)]
+                            <li>
+                                <b>Track Name:</b> [track.Name/]<br/>
+                                <b>Position:</b> [track.position/]<br/>
+                                <b>Duration:</b> [track.duration.div(60)/] min [track.duration.mod(60)/] sec<br/>
+                                [if (not track.featured_artist->isEmpty())]
+                                    <b>Featured Artists:</b>
+                                    <ul>
+                                        [for (artist : Artist | track.featured_artist)]
+                                            <li>[artist.Name/]</li>
+                                        [/for]
+                                    </ul>
+                                [/if]
+                            </li>
+                        [/for]
+                    </ul>
+                </li>
+            [/for]
+        [/for]
+    </ul>
+    <a href="index.html">Back to Index</a>
+</body>
+</html>
+[/template]

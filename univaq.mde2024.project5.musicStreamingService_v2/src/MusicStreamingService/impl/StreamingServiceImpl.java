@@ -3,6 +3,7 @@
 package MusicStreamingService.impl;
 
 import MusicStreamingService.Artist;
+import MusicStreamingService.Concert;
 import MusicStreamingService.MusicStreamingServicePackage;
 import MusicStreamingService.Playlist;
 import MusicStreamingService.Podcast;
@@ -33,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link MusicStreamingService.impl.StreamingServiceImpl#getArtist <em>Artist</em>}</li>
  *   <li>{@link MusicStreamingService.impl.StreamingServiceImpl#getPodcasts <em>Podcasts</em>}</li>
  *   <li>{@link MusicStreamingService.impl.StreamingServiceImpl#getPlaylist <em>Playlist</em>}</li>
+ *   <li>{@link MusicStreamingService.impl.StreamingServiceImpl#getConcert <em>Concert</em>}</li>
  * </ul>
  *
  * @generated
@@ -77,6 +79,16 @@ public class StreamingServiceImpl extends NamedElementImpl implements StreamingS
 	 * @ordered
 	 */
 	protected EList<Playlist> playlist;
+
+	/**
+	 * The cached value of the '{@link #getConcert() <em>Concert</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConcert()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Concert> concert;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -155,6 +167,19 @@ public class StreamingServiceImpl extends NamedElementImpl implements StreamingS
 	 * @generated
 	 */
 	@Override
+	public EList<Concert> getConcert() {
+		if (concert == null) {
+			concert = new EObjectContainmentEList<Concert>(Concert.class, this, MusicStreamingServicePackage.STREAMING_SERVICE__CONCERT);
+		}
+		return concert;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case MusicStreamingServicePackage.STREAMING_SERVICE__LISTENERS:
@@ -165,6 +190,8 @@ public class StreamingServiceImpl extends NamedElementImpl implements StreamingS
 				return ((InternalEList<?>)getPodcasts()).basicRemove(otherEnd, msgs);
 			case MusicStreamingServicePackage.STREAMING_SERVICE__PLAYLIST:
 				return ((InternalEList<?>)getPlaylist()).basicRemove(otherEnd, msgs);
+			case MusicStreamingServicePackage.STREAMING_SERVICE__CONCERT:
+				return ((InternalEList<?>)getConcert()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -185,6 +212,8 @@ public class StreamingServiceImpl extends NamedElementImpl implements StreamingS
 				return getPodcasts();
 			case MusicStreamingServicePackage.STREAMING_SERVICE__PLAYLIST:
 				return getPlaylist();
+			case MusicStreamingServicePackage.STREAMING_SERVICE__CONCERT:
+				return getConcert();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -214,6 +243,10 @@ public class StreamingServiceImpl extends NamedElementImpl implements StreamingS
 				getPlaylist().clear();
 				getPlaylist().addAll((Collection<? extends Playlist>)newValue);
 				return;
+			case MusicStreamingServicePackage.STREAMING_SERVICE__CONCERT:
+				getConcert().clear();
+				getConcert().addAll((Collection<? extends Concert>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -238,6 +271,9 @@ public class StreamingServiceImpl extends NamedElementImpl implements StreamingS
 			case MusicStreamingServicePackage.STREAMING_SERVICE__PLAYLIST:
 				getPlaylist().clear();
 				return;
+			case MusicStreamingServicePackage.STREAMING_SERVICE__CONCERT:
+				getConcert().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -258,6 +294,8 @@ public class StreamingServiceImpl extends NamedElementImpl implements StreamingS
 				return podcasts != null && !podcasts.isEmpty();
 			case MusicStreamingServicePackage.STREAMING_SERVICE__PLAYLIST:
 				return playlist != null && !playlist.isEmpty();
+			case MusicStreamingServicePackage.STREAMING_SERVICE__CONCERT:
+				return concert != null && !concert.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

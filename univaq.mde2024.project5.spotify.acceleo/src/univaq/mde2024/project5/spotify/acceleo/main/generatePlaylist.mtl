@@ -1,0 +1,54 @@
+[module generatePlaylist('https://it.univaq.disim.mde.course.project5/MSS')]
+
+[template public generatePlaylist(aStreamingService : StreamingService)]
+<html>
+<head>
+    <title>Playlists - [aStreamingService.Name/]</title>
+</head>
+<body>
+    <h1>Playlists in [aStreamingService.Name/]</h1>
+    <ul>
+        [for (playlist : Playlist | aStreamingService.Playlist)]
+            <li>
+                <h3>Playlist Name: [playlist.Name/]</h3>
+                <b>Number of Tracks:</b> [playlist.num_of_tracks/]<br/>
+                [if (playlist.duration <> null)]
+                    <b>Total Duration:</b> [playlist.duration.div(60) /] min [playlist.duration.mod(60) /] sec<br/>
+                [/if]
+                <b>Order:</b> [playlist.order/]<br/>
+                <b>Owners:</b>
+                <ul>
+                    [for (owner : User | playlist.owners)]
+                        <li>[owner.Name/] ([owner.username/])</li>
+                    [/for]
+                </ul>
+                <b>Tracks:</b>
+                <ul>
+                    [for (track : AudioTrack | playlist.tracks)]
+                        <li>
+                            <b>Track Name:</b> [track.Name/]<br/>
+                            <b>Duration:</b> [track.duration.div(60) /] min [track.duration.mod(60) /] sec<br/>
+                            [if (track.oclIsTypeOf(MusicTrack))]
+                                <b>Genre:</b> [track.oclAsType(MusicTrack).genre/]<br/>
+                                [if (track.oclAsType(MusicTrack).lyrics <> null and track.oclAsType(MusicTrack).lyrics <> '')]
+                                    <b>Lyrics:</b> [track.oclAsType(MusicTrack).lyrics/]<br/>
+                                [/if]
+                                [if (not track.oclAsType(MusicTrack).featured_artist->isEmpty())]
+                                    <b>Featured Artists:</b>
+                                    <ul>
+                                        [for (artist : Artist | track.oclAsType(MusicTrack).featured_artist)]
+                                            <li>[artist.Name/]</li>
+                                        [/for]
+                                    </ul>
+                                [/if]
+                            [/if]
+                        </li>
+                    [/for]
+                </ul>
+            </li>
+        [/for]
+    </ul>
+    <a href="index.html">Back to Index</a>
+</body>
+</html>
+[/template]

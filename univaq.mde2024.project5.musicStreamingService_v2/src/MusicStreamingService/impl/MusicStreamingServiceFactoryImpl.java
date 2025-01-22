@@ -58,15 +58,16 @@ public class MusicStreamingServiceFactoryImpl extends EFactoryImpl implements Mu
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case MusicStreamingServicePackage.STREAMING_SERVICE: return createStreamingService();
-			case MusicStreamingServicePackage.COMPOSER: return createComposer();
 			case MusicStreamingServicePackage.ARTIST: return createArtist();
 			case MusicStreamingServicePackage.SINGLE_TRACK: return createSingleTrack();
-			case MusicStreamingServicePackage.ALBUM: return createAlbum();
 			case MusicStreamingServicePackage.USER: return createUser();
 			case MusicStreamingServicePackage.PLAYLIST: return createPlaylist();
 			case MusicStreamingServicePackage.PODCAST: return createPodcast();
-			case MusicStreamingServicePackage.EPISODES: return createEpisodes();
+			case MusicStreamingServicePackage.PODCAST_EPISODE: return createPodcastEpisode();
 			case MusicStreamingServicePackage.ALBUM_TRACK: return createAlbumTrack();
+			case MusicStreamingServicePackage.STUDIO_ALBUM: return createStudioAlbum();
+			case MusicStreamingServicePackage.LIVE_ALBUM: return createLiveAlbum();
+			case MusicStreamingServicePackage.CONCERT: return createConcert();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -80,8 +81,8 @@ public class MusicStreamingServiceFactoryImpl extends EFactoryImpl implements Mu
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case MusicStreamingServicePackage.PODCAST_TAG:
-				return createPodcastTagFromString(eDataType, initialValue);
+			case MusicStreamingServicePackage.PODCAST_CATEGORY:
+				return createPodcastCategoryFromString(eDataType, initialValue);
 			case MusicStreamingServicePackage.ORDER:
 				return createOrderFromString(eDataType, initialValue);
 			case MusicStreamingServicePackage.MUSIC_GENRE:
@@ -99,8 +100,8 @@ public class MusicStreamingServiceFactoryImpl extends EFactoryImpl implements Mu
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case MusicStreamingServicePackage.PODCAST_TAG:
-				return convertPodcastTagToString(eDataType, instanceValue);
+			case MusicStreamingServicePackage.PODCAST_CATEGORY:
+				return convertPodcastCategoryToString(eDataType, instanceValue);
 			case MusicStreamingServicePackage.ORDER:
 				return convertOrderToString(eDataType, instanceValue);
 			case MusicStreamingServicePackage.MUSIC_GENRE:
@@ -127,17 +128,6 @@ public class MusicStreamingServiceFactoryImpl extends EFactoryImpl implements Mu
 	 * @generated
 	 */
 	@Override
-	public Composer createComposer() {
-		ComposerImpl composer = new ComposerImpl();
-		return composer;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Artist createArtist() {
 		ArtistImpl artist = new ArtistImpl();
 		return artist;
@@ -152,17 +142,6 @@ public class MusicStreamingServiceFactoryImpl extends EFactoryImpl implements Mu
 	public SingleTrack createSingleTrack() {
 		SingleTrackImpl singleTrack = new SingleTrackImpl();
 		return singleTrack;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Album createAlbum() {
-		AlbumImpl album = new AlbumImpl();
-		return album;
 	}
 
 	/**
@@ -204,9 +183,9 @@ public class MusicStreamingServiceFactoryImpl extends EFactoryImpl implements Mu
 	 * @generated
 	 */
 	@Override
-	public Episodes createEpisodes() {
-		EpisodesImpl episodes = new EpisodesImpl();
-		return episodes;
+	public PodcastEpisode createPodcastEpisode() {
+		PodcastEpisodeImpl podcastEpisode = new PodcastEpisodeImpl();
+		return podcastEpisode;
 	}
 
 	/**
@@ -225,8 +204,41 @@ public class MusicStreamingServiceFactoryImpl extends EFactoryImpl implements Mu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PodcastTag createPodcastTagFromString(EDataType eDataType, String initialValue) {
-		PodcastTag result = PodcastTag.get(initialValue);
+	@Override
+	public StudioAlbum createStudioAlbum() {
+		StudioAlbumImpl studioAlbum = new StudioAlbumImpl();
+		return studioAlbum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public LiveAlbum createLiveAlbum() {
+		LiveAlbumImpl liveAlbum = new LiveAlbumImpl();
+		return liveAlbum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Concert createConcert() {
+		ConcertImpl concert = new ConcertImpl();
+		return concert;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PodcastCategory createPodcastCategoryFromString(EDataType eDataType, String initialValue) {
+		PodcastCategory result = PodcastCategory.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -236,7 +248,7 @@ public class MusicStreamingServiceFactoryImpl extends EFactoryImpl implements Mu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertPodcastTagToString(EDataType eDataType, Object instanceValue) {
+	public String convertPodcastCategoryToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

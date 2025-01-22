@@ -77,7 +77,7 @@ public interface User extends NamedElement {
 	 * @return the value of the '<em>Password</em>' attribute.
 	 * @see #setPassword(String)
 	 * @see MusicStreamingService.MusicStreamingServicePackage#getUser_Password()
-	 * @model unique="false" required="true" ordered="false"
+	 * @model required="true"
 	 * @generated
 	 */
 	String getPassword();
@@ -153,5 +153,14 @@ public interface User extends NamedElement {
 	 * @generated
 	 */
 	EList<Podcast> getSubscribed_podcast();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model tagRequired="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='subscribed_podcast-&gt;select(p | p.category-&gt;includes(tag))-&gt;asOrderedSet()'"
+	 * @generated
+	 */
+	EList<Podcast> getPodcastsByTag(PodcastCategory tag);
 
 } // User

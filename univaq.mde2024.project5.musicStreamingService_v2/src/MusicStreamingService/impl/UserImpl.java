@@ -4,11 +4,17 @@ package MusicStreamingService.impl;
 
 import MusicStreamingService.Artist;
 import MusicStreamingService.MusicStreamingServicePackage;
+import MusicStreamingService.MusicStreamingServiceTables;
 import MusicStreamingService.Playlist;
 import MusicStreamingService.Podcast;
+import MusicStreamingService.PodcastCategory;
 import MusicStreamingService.User;
 
+import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -22,6 +28,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.eclipse.ocl.pivot.evaluation.Executor;
+
+import org.eclipse.ocl.pivot.ids.EnumerationLiteralId;
+import org.eclipse.ocl.pivot.ids.IdResolver;
+
+import org.eclipse.ocl.pivot.ids.IdResolver.IdResolverExtension;
+
+import org.eclipse.ocl.pivot.library.collection.CollectionAsOrderedSetOperation;
+import org.eclipse.ocl.pivot.library.collection.CollectionIncludesOperation;
+
+import org.eclipse.ocl.pivot.utilities.ClassUtil;
+import org.eclipse.ocl.pivot.utilities.PivotUtil;
+import org.eclipse.ocl.pivot.utilities.ValueUtil;
+
+import org.eclipse.ocl.pivot.values.OrderedSetValue;
+
+import org.eclipse.ocl.pivot.values.OrderedSetValue.Accumulator;
 
 /**
  * <!-- begin-user-doc -->
@@ -362,6 +386,48 @@ public class UserImpl extends NamedElementImpl implements User {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EList<Podcast> getPodcastsByTag(final PodcastCategory tag) {
+		/**
+		 *
+		 * subscribed_podcast->select(p | p.category->includes(tag))
+		 * ->asOrderedSet()
+		 */
+		final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ List<Podcast> subscribed_podcast = this.getSubscribed_podcast();
+		final /*@NonInvalid*/ OrderedSetValue BOXED_subscribed_podcast = idResolver.createOrderedSetOfAll(MusicStreamingServiceTables.ORD_CLSSid_Podcast, subscribed_podcast);
+		/*@Thrown*/ Accumulator accumulator = ValueUtil.createOrderedSetAccumulatorValue(MusicStreamingServiceTables.ORD_CLSSid_Podcast);
+		Iterator<Object> ITERATOR_p = BOXED_subscribed_podcast.iterator();
+		/*@NonInvalid*/ OrderedSetValue select;
+		while (true) {
+			if (!ITERATOR_p.hasNext()) {
+				select = accumulator;
+				break;
+			}
+			/*@NonInvalid*/ Podcast p = (Podcast)ITERATOR_p.next();
+			/**
+			 * p.category->includes(tag)
+			 */
+			final /*@NonInvalid*/ List<PodcastCategory> category = p.getCategory();
+			final /*@NonInvalid*/ OrderedSetValue BOXED_category = idResolver.createOrderedSetOfAll(MusicStreamingServiceTables.ORD_ENUMid_PodcastCategory, category);
+			final /*@NonInvalid*/ EnumerationLiteralId BOXED_tag = MusicStreamingServiceTables.ENUMid_PodcastCategory.getEnumerationLiteralId(ClassUtil.nonNullState(tag.getName()));
+			final /*@NonInvalid*/ boolean includes = CollectionIncludesOperation.INSTANCE.evaluate(BOXED_category, BOXED_tag).booleanValue();
+			//
+			if (includes) {
+				accumulator.add(p);
+			}
+		}
+		final /*@NonInvalid*/ OrderedSetValue asOrderedSet = CollectionAsOrderedSetOperation.INSTANCE.evaluate(select);
+		final /*@NonInvalid*/ List<Podcast> ECORE_asOrderedSet = ((IdResolverExtension)idResolver).ecoreValueOfAll(Podcast.class, asOrderedSet);
+		return (EList<Podcast>)ECORE_asOrderedSet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -508,6 +574,20 @@ public class UserImpl extends NamedElementImpl implements User {
 				return subscribed_podcast != null && !subscribed_podcast.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case MusicStreamingServicePackage.USER___GET_PODCASTS_BY_TAG__PODCASTCATEGORY:
+				return getPodcastsByTag((PodcastCategory)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

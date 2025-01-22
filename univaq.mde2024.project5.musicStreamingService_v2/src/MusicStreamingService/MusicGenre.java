@@ -19,16 +19,6 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum MusicGenre implements Enumerator {
 	/**
-	 * The '<em><b>Pop</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #POP_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	POP(0, "Pop", "Pop"),
-
-	/**
 	 * The '<em><b>Reggae</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -66,18 +56,17 @@ public enum MusicGenre implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	AFROBEAT(0, "Afrobeat", "Afrobeat");
+	AFROBEAT(0, "Afrobeat", "Afrobeat"),
 
 	/**
-	 * The '<em><b>Pop</b></em>' literal value.
+	 * The '<em><b>Pop</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #POP
-	 * @model name="Pop"
+	 * @see #POP_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	public static final int POP_VALUE = 0;
+	POP(0, "Pop", "Pop");
 
 	/**
 	 * The '<em><b>Reggae</b></em>' literal value.
@@ -124,6 +113,17 @@ public enum MusicGenre implements Enumerator {
 	public static final int AFROBEAT_VALUE = 0;
 
 	/**
+	 * The '<em><b>Pop</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #POP
+	 * @model name="Pop"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int POP_VALUE = 0;
+
+	/**
 	 * An array of all the '<em><b>Music Genre</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -131,11 +131,11 @@ public enum MusicGenre implements Enumerator {
 	 */
 	private static final MusicGenre[] VALUES_ARRAY =
 		new MusicGenre[] {
-			POP,
 			REGGAE,
 			HIP_HOP,
 			ROCK,
 			AFROBEAT,
+			POP,
 		};
 
 	/**
@@ -192,7 +192,7 @@ public enum MusicGenre implements Enumerator {
 	 */
 	public static MusicGenre get(int value) {
 		switch (value) {
-			case POP_VALUE: return POP;
+			case REGGAE_VALUE: return REGGAE;
 		}
 		return null;
 	}

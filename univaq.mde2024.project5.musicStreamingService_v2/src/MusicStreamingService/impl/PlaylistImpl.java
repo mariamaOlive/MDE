@@ -2,17 +2,23 @@
  */
 package MusicStreamingService.impl;
 
+import MusicStreamingService.AudioTrack;
 import MusicStreamingService.MusicStreamingServicePackage;
+import MusicStreamingService.MusicStreamingServiceTables;
 import MusicStreamingService.Order;
 import MusicStreamingService.Playlist;
-import MusicStreamingService.Track;
 import MusicStreamingService.User;
 
+import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -23,6 +29,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.eclipse.ocl.pivot.evaluation.Executor;
+
+import org.eclipse.ocl.pivot.ids.IdResolver;
+import org.eclipse.ocl.pivot.ids.TypeId;
+
+import org.eclipse.ocl.pivot.library.collection.CollectionIsEmptyOperation;
+
+import org.eclipse.ocl.pivot.library.oclany.OclComparableLessThanEqualOperation;
+
+import org.eclipse.ocl.pivot.library.string.CGStringGetSeverityOperation;
+import org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation;
+
+import org.eclipse.ocl.pivot.utilities.PivotUtil;
+import org.eclipse.ocl.pivot.utilities.ValueUtil;
+
+import org.eclipse.ocl.pivot.values.IntegerValue;
+import org.eclipse.ocl.pivot.values.OrderedSetValue;
 
 /**
  * <!-- begin-user-doc -->
@@ -50,7 +74,7 @@ public class PlaylistImpl extends NamedElementImpl implements Playlist {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Track> tracks;
+	protected EList<AudioTrack> tracks;
 
 	/**
 	 * The default value of the '{@link #getNum_of_tracks() <em>Num of tracks</em>}' attribute.
@@ -165,9 +189,9 @@ public class PlaylistImpl extends NamedElementImpl implements Playlist {
 	 * @generated
 	 */
 	@Override
-	public EList<Track> getTracks() {
+	public EList<AudioTrack> getTracks() {
 		if (tracks == null) {
-			tracks = new EObjectResolvingEList<Track>(Track.class, this, MusicStreamingServicePackage.PLAYLIST__TRACKS);
+			tracks = new EObjectResolvingEList<AudioTrack>(AudioTrack.class, this, MusicStreamingServicePackage.PLAYLIST__TRACKS);
 		}
 		return tracks;
 	}
@@ -313,6 +337,62 @@ public class PlaylistImpl extends NamedElementImpl implements Playlist {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public boolean PlaylistMustHaveTracks(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		final String constraintName = "Playlist::PlaylistMustHaveTracks";
+		try {
+			/**
+			 *
+			 * inv PlaylistMustHaveTracks:
+			 *   let severity : Integer[1] = constraintName.getSeverity()
+			 *   in
+			 *     if severity <= 0
+			 *     then true
+			 *     else
+			 *       let result : Boolean[?] = not tracks->isEmpty()
+			 *       in
+			 *         constraintName.logDiagnostic(self, null, diagnostics, context, null, severity, result, 0)
+			 *     endif
+			 */
+			final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+			final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+			final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, MusicStreamingServicePackage.Literals.PLAYLIST___PLAYLIST_MUST_HAVE_TRACKS__DIAGNOSTICCHAIN_MAP);
+			final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, MusicStreamingServiceTables.INT_0).booleanValue();
+			/*@NonInvalid*/ boolean IF_le;
+			if (le) {
+				IF_le = true;
+			}
+			else {
+				final /*@NonInvalid*/ List<AudioTrack> tracks = this.getTracks();
+				final /*@NonInvalid*/ OrderedSetValue BOXED_tracks = idResolver.createOrderedSetOfAll(MusicStreamingServiceTables.ORD_CLSSid_AudioTrack, tracks);
+				final /*@NonInvalid*/ boolean isEmpty = CollectionIsEmptyOperation.INSTANCE.evaluate(BOXED_tracks).booleanValue();
+				final /*@NonInvalid*/ Boolean result;
+				if (!isEmpty) {
+					result = ValueUtil.TRUE_VALUE;
+				}
+				else {
+					if (isEmpty) {
+						result = ValueUtil.FALSE_VALUE;
+					}
+					else {
+						result = null;
+					}
+				}
+				final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, constraintName, this, (Object)null, diagnostics, context, (Object)null, severity_0, result, MusicStreamingServiceTables.INT_0).booleanValue();
+				IF_le = logDiagnostic;
+			}
+			return IF_le;
+		}
+		catch (Throwable e) {
+			return ValueUtil.validationFailedDiagnostic(constraintName, this, diagnostics, context, e);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -370,7 +450,7 @@ public class PlaylistImpl extends NamedElementImpl implements Playlist {
 		switch (featureID) {
 			case MusicStreamingServicePackage.PLAYLIST__TRACKS:
 				getTracks().clear();
-				getTracks().addAll((Collection<? extends Track>)newValue);
+				getTracks().addAll((Collection<? extends AudioTrack>)newValue);
 				return;
 			case MusicStreamingServicePackage.PLAYLIST__NUM_OF_TRACKS:
 				setNum_of_tracks((Integer)newValue);
@@ -436,6 +516,21 @@ public class PlaylistImpl extends NamedElementImpl implements Playlist {
 				return owners != null && !owners.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case MusicStreamingServicePackage.PLAYLIST___PLAYLIST_MUST_HAVE_TRACKS__DIAGNOSTICCHAIN_MAP:
+				return PlaylistMustHaveTracks((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

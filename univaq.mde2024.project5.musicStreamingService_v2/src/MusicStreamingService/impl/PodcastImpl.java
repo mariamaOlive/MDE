@@ -2,17 +2,23 @@
  */
 package MusicStreamingService.impl;
 
-import MusicStreamingService.Episodes;
 import MusicStreamingService.MusicStreamingServicePackage;
+import MusicStreamingService.MusicStreamingServiceTables;
 import MusicStreamingService.Podcast;
-import MusicStreamingService.PodcastTag;
+import MusicStreamingService.PodcastCategory;
+import MusicStreamingService.PodcastEpisode;
 import MusicStreamingService.User;
 
+import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -25,6 +31,24 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.ocl.pivot.evaluation.Executor;
+
+import org.eclipse.ocl.pivot.ids.IdResolver;
+import org.eclipse.ocl.pivot.ids.TypeId;
+
+import org.eclipse.ocl.pivot.library.collection.CollectionIsEmptyOperation;
+
+import org.eclipse.ocl.pivot.library.oclany.OclComparableLessThanEqualOperation;
+
+import org.eclipse.ocl.pivot.library.string.CGStringGetSeverityOperation;
+import org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation;
+
+import org.eclipse.ocl.pivot.utilities.PivotUtil;
+import org.eclipse.ocl.pivot.utilities.ValueUtil;
+
+import org.eclipse.ocl.pivot.values.IntegerValue;
+import org.eclipse.ocl.pivot.values.OrderedSetValue;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Podcast</b></em>'.
@@ -33,7 +57,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link MusicStreamingService.impl.PodcastImpl#getTag <em>Tag</em>}</li>
+ *   <li>{@link MusicStreamingService.impl.PodcastImpl#getCategory <em>Category</em>}</li>
  *   <li>{@link MusicStreamingService.impl.PodcastImpl#getRating <em>Rating</em>}</li>
  *   <li>{@link MusicStreamingService.impl.PodcastImpl#getImg_url <em>Img url</em>}</li>
  *   <li>{@link MusicStreamingService.impl.PodcastImpl#getEpisodes <em>Episodes</em>}</li>
@@ -44,14 +68,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class PodcastImpl extends NamedElementImpl implements Podcast {
 	/**
-	 * The cached value of the '{@link #getTag() <em>Tag</em>}' attribute list.
+	 * The cached value of the '{@link #getCategory() <em>Category</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTag()
+	 * @see #getCategory()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<PodcastTag> tag;
+	protected EList<PodcastCategory> category;
 
 	/**
 	 * The default value of the '{@link #getRating() <em>Rating</em>}' attribute.
@@ -101,7 +125,7 @@ public class PodcastImpl extends NamedElementImpl implements Podcast {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Episodes> episodes;
+	protected EList<PodcastEpisode> episodes;
 
 	/**
 	 * The cached value of the '{@link #getFollowers() <em>Followers</em>}' reference list.
@@ -138,11 +162,11 @@ public class PodcastImpl extends NamedElementImpl implements Podcast {
 	 * @generated
 	 */
 	@Override
-	public EList<PodcastTag> getTag() {
-		if (tag == null) {
-			tag = new EDataTypeUniqueEList<PodcastTag>(PodcastTag.class, this, MusicStreamingServicePackage.PODCAST__TAG);
+	public EList<PodcastCategory> getCategory() {
+		if (category == null) {
+			category = new EDataTypeUniqueEList<PodcastCategory>(PodcastCategory.class, this, MusicStreamingServicePackage.PODCAST__CATEGORY);
 		}
-		return tag;
+		return category;
 	}
 
 	/**
@@ -197,9 +221,9 @@ public class PodcastImpl extends NamedElementImpl implements Podcast {
 	 * @generated
 	 */
 	@Override
-	public EList<Episodes> getEpisodes() {
+	public EList<PodcastEpisode> getEpisodes() {
 		if (episodes == null) {
-			episodes = new EObjectContainmentEList<Episodes>(Episodes.class, this, MusicStreamingServicePackage.PODCAST__EPISODES);
+			episodes = new EObjectContainmentEList<PodcastEpisode>(PodcastEpisode.class, this, MusicStreamingServicePackage.PODCAST__EPISODES);
 		}
 		return episodes;
 	}
@@ -215,6 +239,62 @@ public class PodcastImpl extends NamedElementImpl implements Podcast {
 			followers = new EObjectWithInverseResolvingEList.ManyInverse<User>(User.class, this, MusicStreamingServicePackage.PODCAST__FOLLOWERS, MusicStreamingServicePackage.USER__SUBSCRIBED_PODCAST);
 		}
 		return followers;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean PodcastMustHaveEpisodes(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		final String constraintName = "Podcast::PodcastMustHaveEpisodes";
+		try {
+			/**
+			 *
+			 * inv PodcastMustHaveEpisodes:
+			 *   let severity : Integer[1] = constraintName.getSeverity()
+			 *   in
+			 *     if severity <= 0
+			 *     then true
+			 *     else
+			 *       let result : Boolean[?] = not episodes->isEmpty()
+			 *       in
+			 *         constraintName.logDiagnostic(self, null, diagnostics, context, null, severity, result, 0)
+			 *     endif
+			 */
+			final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+			final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+			final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, MusicStreamingServicePackage.Literals.PODCAST___PODCAST_MUST_HAVE_EPISODES__DIAGNOSTICCHAIN_MAP);
+			final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, MusicStreamingServiceTables.INT_0).booleanValue();
+			/*@NonInvalid*/ boolean IF_le;
+			if (le) {
+				IF_le = true;
+			}
+			else {
+				final /*@NonInvalid*/ List<PodcastEpisode> episodes = this.getEpisodes();
+				final /*@NonInvalid*/ OrderedSetValue BOXED_episodes = idResolver.createOrderedSetOfAll(MusicStreamingServiceTables.ORD_CLSSid_PodcastEpisode, episodes);
+				final /*@NonInvalid*/ boolean isEmpty = CollectionIsEmptyOperation.INSTANCE.evaluate(BOXED_episodes).booleanValue();
+				final /*@NonInvalid*/ Boolean result;
+				if (!isEmpty) {
+					result = ValueUtil.TRUE_VALUE;
+				}
+				else {
+					if (isEmpty) {
+						result = ValueUtil.FALSE_VALUE;
+					}
+					else {
+						result = null;
+					}
+				}
+				final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, constraintName, this, (Object)null, diagnostics, context, (Object)null, severity_0, result, MusicStreamingServiceTables.INT_0).booleanValue();
+				IF_le = logDiagnostic;
+			}
+			return IF_le;
+		}
+		catch (Throwable e) {
+			return ValueUtil.validationFailedDiagnostic(constraintName, this, diagnostics, context, e);
+		}
 	}
 
 	/**
@@ -256,8 +336,8 @@ public class PodcastImpl extends NamedElementImpl implements Podcast {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MusicStreamingServicePackage.PODCAST__TAG:
-				return getTag();
+			case MusicStreamingServicePackage.PODCAST__CATEGORY:
+				return getCategory();
 			case MusicStreamingServicePackage.PODCAST__RATING:
 				return getRating();
 			case MusicStreamingServicePackage.PODCAST__IMG_URL:
@@ -279,9 +359,9 @@ public class PodcastImpl extends NamedElementImpl implements Podcast {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MusicStreamingServicePackage.PODCAST__TAG:
-				getTag().clear();
-				getTag().addAll((Collection<? extends PodcastTag>)newValue);
+			case MusicStreamingServicePackage.PODCAST__CATEGORY:
+				getCategory().clear();
+				getCategory().addAll((Collection<? extends PodcastCategory>)newValue);
 				return;
 			case MusicStreamingServicePackage.PODCAST__RATING:
 				setRating((Float)newValue);
@@ -291,7 +371,7 @@ public class PodcastImpl extends NamedElementImpl implements Podcast {
 				return;
 			case MusicStreamingServicePackage.PODCAST__EPISODES:
 				getEpisodes().clear();
-				getEpisodes().addAll((Collection<? extends Episodes>)newValue);
+				getEpisodes().addAll((Collection<? extends PodcastEpisode>)newValue);
 				return;
 			case MusicStreamingServicePackage.PODCAST__FOLLOWERS:
 				getFollowers().clear();
@@ -309,8 +389,8 @@ public class PodcastImpl extends NamedElementImpl implements Podcast {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MusicStreamingServicePackage.PODCAST__TAG:
-				getTag().clear();
+			case MusicStreamingServicePackage.PODCAST__CATEGORY:
+				getCategory().clear();
 				return;
 			case MusicStreamingServicePackage.PODCAST__RATING:
 				setRating(RATING_EDEFAULT);
@@ -336,8 +416,8 @@ public class PodcastImpl extends NamedElementImpl implements Podcast {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MusicStreamingServicePackage.PODCAST__TAG:
-				return tag != null && !tag.isEmpty();
+			case MusicStreamingServicePackage.PODCAST__CATEGORY:
+				return category != null && !category.isEmpty();
 			case MusicStreamingServicePackage.PODCAST__RATING:
 				return rating != RATING_EDEFAULT;
 			case MusicStreamingServicePackage.PODCAST__IMG_URL:
@@ -356,12 +436,27 @@ public class PodcastImpl extends NamedElementImpl implements Podcast {
 	 * @generated
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case MusicStreamingServicePackage.PODCAST___PODCAST_MUST_HAVE_EPISODES__DIAGNOSTICCHAIN_MAP:
+				return PodcastMustHaveEpisodes((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+		}
+		return super.eInvoke(operationID, arguments);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (tag: ");
-		result.append(tag);
+		result.append(" (category: ");
+		result.append(category);
 		result.append(", rating: ");
 		result.append(rating);
 		result.append(", img_url: ");

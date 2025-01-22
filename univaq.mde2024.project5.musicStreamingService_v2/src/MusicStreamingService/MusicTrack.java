@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.EList;
  * @model abstract="true"
  * @generated
  */
-public interface MusicTrack extends Track {
+public interface MusicTrack extends AudioTrack {
 	/**
 	 * Returns the value of the '<em><b>Genre</b></em>' attribute list.
 	 * The list contents are of type {@link MusicStreamingService.MusicGenre}.
@@ -44,7 +44,7 @@ public interface MusicTrack extends Track {
 	 * @return the value of the '<em>Lyrics</em>' attribute.
 	 * @see #setLyrics(String)
 	 * @see MusicStreamingService.MusicStreamingServicePackage#getMusicTrack_Lyrics()
-	 * @model ordered="false"
+	 * @model
 	 * @generated
 	 */
 	String getLyrics();

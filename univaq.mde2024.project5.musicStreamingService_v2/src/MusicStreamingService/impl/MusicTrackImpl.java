@@ -38,7 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public abstract class MusicTrackImpl extends TrackImpl implements MusicTrack {
+public abstract class MusicTrackImpl extends AudioTrackImpl implements MusicTrack {
 	/**
 	 * The cached value of the '{@link #getGenre() <em>Genre</em>}' attribute list.
 	 * <!-- begin-user-doc -->

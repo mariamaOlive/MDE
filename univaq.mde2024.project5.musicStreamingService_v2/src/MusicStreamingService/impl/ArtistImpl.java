@@ -5,15 +5,21 @@ package MusicStreamingService.impl;
 import MusicStreamingService.Album;
 import MusicStreamingService.Artist;
 import MusicStreamingService.MusicStreamingServicePackage;
+import MusicStreamingService.MusicStreamingServiceTables;
 import MusicStreamingService.MusicTrack;
 import MusicStreamingService.SingleTrack;
 import MusicStreamingService.User;
 
+import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -24,6 +30,25 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.eclipse.ocl.pivot.evaluation.Executor;
+
+import org.eclipse.ocl.pivot.ids.IdResolver;
+import org.eclipse.ocl.pivot.ids.TypeId;
+
+import org.eclipse.ocl.pivot.library.collection.CollectionSizeOperation;
+
+import org.eclipse.ocl.pivot.library.oclany.OclComparableGreaterThanOperation;
+import org.eclipse.ocl.pivot.library.oclany.OclComparableLessThanEqualOperation;
+
+import org.eclipse.ocl.pivot.library.string.CGStringGetSeverityOperation;
+import org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation;
+
+import org.eclipse.ocl.pivot.utilities.PivotUtil;
+import org.eclipse.ocl.pivot.utilities.ValueUtil;
+
+import org.eclipse.ocl.pivot.values.IntegerValue;
+import org.eclipse.ocl.pivot.values.OrderedSetValue;
 
 /**
  * <!-- begin-user-doc -->
@@ -339,6 +364,69 @@ public class ArtistImpl extends NamedElementImpl implements Artist {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public boolean MustHaveAlbumOrSolo(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		final String constraintName = "Artist::MustHaveAlbumOrSolo";
+		try {
+			/**
+			 *
+			 * inv MustHaveAlbumOrSolo:
+			 *   let severity : Integer[1] = constraintName.getSeverity()
+			 *   in
+			 *     if severity <= 0
+			 *     then true
+			 *     else
+			 *       let
+			 *         result : Boolean[?] = owned_albums->size() > 0 or
+			 *         owned_solos->size() > 0
+			 *       in
+			 *         constraintName.logDiagnostic(self, null, diagnostics, context, null, severity, result, 0)
+			 *     endif
+			 */
+			final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+			final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+			final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, MusicStreamingServicePackage.Literals.ARTIST___MUST_HAVE_ALBUM_OR_SOLO__DIAGNOSTICCHAIN_MAP);
+			final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, MusicStreamingServiceTables.INT_0).booleanValue();
+			/*@NonInvalid*/ boolean IF_le;
+			if (le) {
+				IF_le = true;
+			}
+			else {
+				final /*@NonInvalid*/ List<Album> owned_albums = this.getOwned_albums();
+				final /*@NonInvalid*/ OrderedSetValue BOXED_owned_albums = idResolver.createOrderedSetOfAll(MusicStreamingServiceTables.ORD_CLSSid_Album, owned_albums);
+				final /*@NonInvalid*/ IntegerValue size = CollectionSizeOperation.INSTANCE.evaluate(BOXED_owned_albums);
+				final /*@NonInvalid*/ boolean gt = OclComparableGreaterThanOperation.INSTANCE.evaluate(executor, size, MusicStreamingServiceTables.INT_0).booleanValue();
+				final /*@NonInvalid*/ Boolean result;
+				if (gt) {
+					result = ValueUtil.TRUE_VALUE;
+				}
+				else {
+					final /*@NonInvalid*/ List<SingleTrack> owned_solos = this.getOwned_solos();
+					final /*@NonInvalid*/ OrderedSetValue BOXED_owned_solos = idResolver.createOrderedSetOfAll(MusicStreamingServiceTables.ORD_CLSSid_SingleTrack, owned_solos);
+					final /*@NonInvalid*/ IntegerValue size_0 = CollectionSizeOperation.INSTANCE.evaluate(BOXED_owned_solos);
+					final /*@NonInvalid*/ boolean gt_0 = OclComparableGreaterThanOperation.INSTANCE.evaluate(executor, size_0, MusicStreamingServiceTables.INT_0).booleanValue();
+					if (gt_0) {
+						result = ValueUtil.TRUE_VALUE;
+					}
+					else {
+						result = ValueUtil.FALSE_VALUE;
+					}
+				}
+				final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, constraintName, this, (Object)null, diagnostics, context, (Object)null, severity_0, result, MusicStreamingServiceTables.INT_0).booleanValue();
+				IF_le = logDiagnostic;
+			}
+			return IF_le;
+		}
+		catch (Throwable e) {
+			return ValueUtil.validationFailedDiagnostic(constraintName, this, diagnostics, context, e);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -498,6 +586,21 @@ public class ArtistImpl extends NamedElementImpl implements Artist {
 				return featured_in != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case MusicStreamingServicePackage.ARTIST___MUST_HAVE_ALBUM_OR_SOLO__DIAGNOSTICCHAIN_MAP:
+				return MustHaveAlbumOrSolo((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="generateUser" nsURI="univaq::mde2024::project5::spotify::acceleo::main::generateUser" endHeaderPosition="200">
+    <input>
+      <takesTypesFrom href="https://it.univaq.disim.mde.course.project5/MSS#/"/>
+    </input>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateUser" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;html>&#xA;&lt;head>&#xA;    &lt;title>Users in "/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="aStreamingService" referredVariable="/0/generateUser/aStreamingService">
+          <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//NamedElement/Name"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;/title>&#xA;&lt;/head>&#xA;&lt;body>&#xA;    &lt;h1>Users of "/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="aStreamingService" referredVariable="/0/generateUser/aStreamingService">
+          <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//NamedElement/Name"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;/h1>&#xA;    &lt;ul>&#xA;"/>
+      <body xsi:type="mtl:ForBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="            &lt;li>&#xA;                &lt;strong>Name:&lt;/strong> "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="user" referredVariable="/0/generateUser/%.5/user">
+            <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//NamedElement/Name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;br/>&#xA;                &lt;strong>Username:&lt;/strong> "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="user" referredVariable="/0/generateUser/%.5/user">
+            <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//User/username"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;br/>&#xA;                &lt;strong>Email:&lt;/strong> "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="user" referredVariable="/0/generateUser/%.5/user">
+            <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//User/email"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;br/>&#xA;"/>
+        <body xsi:type="mtl:IfBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="                    &lt;strong>Followed Artists:&lt;/strong> &#xA;                    &lt;ul>&#xA;"/>
+          <body xsi:type="mtl:ForBlock">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="                            &lt;li>"/>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="artist" referredVariable="/0/generateUser/%.5/%.7/%.1/artist">
+                <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Artist"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//NamedElement/Name"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;/li>&#xA;"/>
+            <loopVariable name="artist">
+              <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Artist"/>
+            </loopVariable>
+            <iterSet xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Artist"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="user" referredVariable="/0/generateUser/%.5/user">
+                <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="https://it.univaq.disim.mde.course.project5/MSS#//User/followed_artist"/>
+            </iterSet>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="                    &lt;/ul>&#xA;"/>
+          <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+            <source xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              <source xsi:type="ocl.ecore:CollectionLiteralExp" eType="/8/Set(Artist)">
+                <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL/Annotations">
+                  <details key="IMPLICIT_SET_CONVERSION" value="true"/>
+                </eAnnotations>
+                <part xsi:type="ocl.ecore:CollectionItem">
+                  <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Artist"/>
+                  <item xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Artist"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="user" referredVariable="/0/generateUser/%.5/user">
+                      <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EReference" href="https://it.univaq.disim.mde.course.project5/MSS#//User/followed_artist"/>
+                  </item>
+                </part>
+              </source>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Set(T)_Class/isEmpty"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/not"/>
+          </ifExpr>
+        </body>
+        <body xsi:type="mtl:IfBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="                    &lt;strong>Owned Playlists:&lt;/strong> &#xA;                    &lt;ul>&#xA;"/>
+          <body xsi:type="mtl:ForBlock">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="                            &lt;li>"/>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="playlist" referredVariable="/0/generateUser/%.5/%.8/%.1/playlist">
+                <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Playlist"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//NamedElement/Name"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;/li>&#xA;"/>
+            <loopVariable name="playlist">
+              <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Playlist"/>
+            </loopVariable>
+            <iterSet xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Playlist"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="user" referredVariable="/0/generateUser/%.5/user">
+                <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="https://it.univaq.disim.mde.course.project5/MSS#//User/owned_playlist"/>
+            </iterSet>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="                    &lt;/ul>&#xA;"/>
+          <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+            <source xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              <source xsi:type="ocl.ecore:CollectionLiteralExp" eType="/8/Set(Playlist)">
+                <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL/Annotations">
+                  <details key="IMPLICIT_SET_CONVERSION" value="true"/>
+                </eAnnotations>
+                <part xsi:type="ocl.ecore:CollectionItem">
+                  <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Playlist"/>
+                  <item xsi:type="ocl.ecore:PropertyCallExp">
+                    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Playlist"/>
+                    <source xsi:type="ocl.ecore:VariableExp" name="user" referredVariable="/0/generateUser/%.5/user">
+                      <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+                    </source>
+                    <referredProperty xsi:type="ecore:EReference" href="https://it.univaq.disim.mde.course.project5/MSS#//User/owned_playlist"/>
+                  </item>
+                </part>
+              </source>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Set(T)_Class/isEmpty"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/not"/>
+          </ifExpr>
+        </body>
+        <body xsi:type="mtl:IfBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="                    &lt;strong>Subscribed Podcasts:&lt;/strong> &#xA;                    &lt;ul>&#xA;"/>
+          <body xsi:type="mtl:ForBlock">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="                            &lt;li>"/>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="podcast" referredVariable="/0/generateUser/%.5/%.9/%.1/podcast">
+                <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//NamedElement/Name"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;/li>&#xA;"/>
+            <loopVariable name="podcast">
+              <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+            </loopVariable>
+            <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/8/OrderedSet(Podcast)">
+              <source xsi:type="ocl.ecore:VariableExp" name="user" referredVariable="/0/generateUser/%.5/user">
+                <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="https://it.univaq.disim.mde.course.project5/MSS#//User/subscribed_podcast"/>
+            </iterSet>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="                    &lt;/ul>&#xA;"/>
+          <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+            <source xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp" eType="/8/OrderedSet(Podcast)">
+                <source xsi:type="ocl.ecore:VariableExp" name="user" referredVariable="/0/generateUser/%.5/user">
+                  <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="https://it.univaq.disim.mde.course.project5/MSS#//User/subscribed_podcast"/>
+              </source>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)_Class/isEmpty"/>
+            </source>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/not"/>
+          </ifExpr>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="            &lt;/li>&#xA;"/>
+        <loopVariable name="user">
+          <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+        </loopVariable>
+        <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/8/Set(User)">
+          <source xsi:type="ocl.ecore:VariableExp" name="aStreamingService" referredVariable="/0/generateUser/aStreamingService">
+            <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService"/>
+          </source>
+          <referredProperty xsi:type="ecore:EReference" href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService/listeners"/>
+        </iterSet>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="    &lt;/ul>&#xA;    &lt;a href=&quot;index.html&quot;>Back to Index&lt;/a>&#xA;&lt;/body>&#xA;&lt;/html>"/>
+      <parameter name="aStreamingService">
+        <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateUser">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateUser"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aStreamingService">
+          <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MusicStreamingService_StreamingService_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(User)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(Artist)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Artist"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(Playlist)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Playlist"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Podcast)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Artist"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Artist"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Playlist"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Playlist"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateUser">
+      <details key="start" value="74"/>
+      <details key="end" value="1693"/>
+      <details key="line" value="3"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateUser/%">
+      <details key="start" value="143"/>
+      <details key="end" value="177"/>
+      <details key="line" value="4"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateUser/%.1">
+      <details key="start" value="178"/>
+      <details key="end" value="200"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateUser/%.1/aStreamingService">
+      <details key="start" value="178"/>
+      <details key="end" value="195"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateUser/%.2">
+      <details key="start" value="202"/>
+      <details key="end" value="243"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateUser/%.3">
+      <details key="start" value="244"/>
+      <details key="end" value="266"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateUser/%.3/aStreamingService">
+      <details key="start" value="244"/>
+      <details key="end" value="261"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateUser/%.4">
+      <details key="start" value="268"/>
+      <details key="end" value="283"/>
+      <details key="line" value="9"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateUser/%.5">
+      <details key="start" value="291"/>
+      <details key="end" value="1612"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateUser/%.5/%">
+      <details key="start" value="341"/>
+      <details key="end" value="397"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateUser/%.5/%.1">
+      <details key="start" value="398"/>
+      <details key="end" value="407"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateUser/%.5/%.1/user">
+      <details key="start" value="398"/>
+      <details key="end" value="402"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateUser/%.5/%.2">
+      <details key="start" value="409"/>
+      <details key="end" value="458"/>
+      <details key="line" value="13"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateUser/%.5/%.3">
+      <details key="start" value="459"/>
+      <details key="end" value="472"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateUser/%.5/%.3/user">
+      <details key="start" value="459"/>
+      <details key="end" value="463"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateUser/%.5/%.4">
+      <details key="start" value="474"/>
+      <details key="end" value="520"/>
+      <details key="line" value="14"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateUser/%.5/%.5">
+      <details key="start" value="521"/>
+      <details key="end" value="531"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateUser/%.5/%.5/user">
+      <details key="start" value="521"/>
+      <details key="end" value="525"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateUser/%.5/%.6">
+      <details key="start" value="533"/>
+      <details key="end" value="539"/>
+      <details key="line" value="15"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateUser/%.5/%.7">
+      <details key="start" value="555"/>
+      <details key="end" value="880"/>
+      <details key="line" value="16"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateUser/%.5/%.7/%">
+      <details key="start" value="598"/>
+      <details key="end" value="679"/>
+      <details key="line" value="17"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateUser/%.5/%.7/%.1">
+      <details key="start" value="703"/>
+      <details key="end" value="832"/>
+      <details key="line" value="19"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateUser/%.5/%.7/%.1/%">
+      <details key="start" value="750"/>
+      <details key="end" value="782"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateUser/%.5/%.7/%.1/%.1">
+      <details key="start" value="783"/>
+      <details key="end" value="794"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateUser/%.5/%.7/%.1/%.1/artist">
+      <details key="start" value="783"/>
+      <details key="end" value="789"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateUser/%.5/%.7/%.1/%.2">
+      <details key="start" value="796"/>
+      <details key="end" value="802"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateUser/%.5/%.7/%.1/artist">
+      <details key="start" value="709"/>
+      <details key="end" value="724"/>
+      <details key="line" value="19"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateUser/%.5/%.7/%.1/%.3">
+      <details key="start" value="727"/>
+      <details key="end" value="747"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generateUser/%.5/%.7/%.1/%.3/user">
+      <details key="start" value="727"/>
+      <details key="end" value="731"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generateUser/%.5/%.7/%.2">
+      <details key="start" value="833"/>
+      <details key="end" value="859"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generateUser/%.5/%.7/%.3">
+      <details key="start" value="559"/>
+      <details key="end" value="596"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generateUser/%.5/%.7/%.3/%">
+      <details key="start" value="564"/>
+      <details key="end" value="595"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/generateUser/%.5/%.7/%.3/%/%">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/generateUser/%.5/%.7/%.3/%/%/%/%">
+      <details key="start" value="564"/>
+      <details key="end" value="584"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/generateUser/%.5/%.7/%.3/%/%/%/%/user">
+      <details key="start" value="564"/>
+      <details key="end" value="568"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/generateUser/%.5/%.8">
+      <details key="start" value="897"/>
+      <details key="end" value="1225"/>
+      <details key="line" value="24"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/generateUser/%.5/%.8/%">
+      <details key="start" value="939"/>
+      <details key="end" value="1019"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/generateUser/%.5/%.8/%.1">
+      <details key="start" value="1043"/>
+      <details key="end" value="1177"/>
+      <details key="line" value="27"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/generateUser/%.5/%.8/%.1/%">
+      <details key="start" value="1093"/>
+      <details key="end" value="1125"/>
+      <details key="line" value="28"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/generateUser/%.5/%.8/%.1/%.1">
+      <details key="start" value="1126"/>
+      <details key="end" value="1139"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/generateUser/%.5/%.8/%.1/%.1/playlist">
+      <details key="start" value="1126"/>
+      <details key="end" value="1134"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/generateUser/%.5/%.8/%.1/%.2">
+      <details key="start" value="1141"/>
+      <details key="end" value="1147"/>
+      <details key="line" value="28"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/generateUser/%.5/%.8/%.1/playlist">
+      <details key="start" value="1049"/>
+      <details key="end" value="1068"/>
+      <details key="line" value="27"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/generateUser/%.5/%.8/%.1/%.3">
+      <details key="start" value="1071"/>
+      <details key="end" value="1090"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/generateUser/%.5/%.8/%.1/%.3/user">
+      <details key="start" value="1071"/>
+      <details key="end" value="1075"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/generateUser/%.5/%.8/%.2">
+      <details key="start" value="1178"/>
+      <details key="end" value="1204"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/generateUser/%.5/%.8/%.3">
+      <details key="start" value="901"/>
+      <details key="end" value="937"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/generateUser/%.5/%.8/%.3/%">
+      <details key="start" value="906"/>
+      <details key="end" value="936"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/generateUser/%.5/%.8/%.3/%/%">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/generateUser/%.5/%.8/%.3/%/%/%/%">
+      <details key="start" value="906"/>
+      <details key="end" value="925"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/generateUser/%.5/%.8/%.3/%/%/%/%/user">
+      <details key="start" value="906"/>
+      <details key="end" value="910"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/generateUser/%.5/%.9">
+      <details key="start" value="1242"/>
+      <details key="end" value="1579"/>
+      <details key="line" value="32"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/generateUser/%.5/%.9/%">
+      <details key="start" value="1288"/>
+      <details key="end" value="1372"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/generateUser/%.5/%.9/%.1">
+      <details key="start" value="1396"/>
+      <details key="end" value="1531"/>
+      <details key="line" value="35"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/generateUser/%.5/%.9/%.1/%">
+      <details key="start" value="1448"/>
+      <details key="end" value="1480"/>
+      <details key="line" value="36"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/generateUser/%.5/%.9/%.1/%.1">
+      <details key="start" value="1481"/>
+      <details key="end" value="1493"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/generateUser/%.5/%.9/%.1/%.1/podcast">
+      <details key="start" value="1481"/>
+      <details key="end" value="1488"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/generateUser/%.5/%.9/%.1/%.2">
+      <details key="start" value="1495"/>
+      <details key="end" value="1501"/>
+      <details key="line" value="36"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/generateUser/%.5/%.9/%.1/podcast">
+      <details key="start" value="1402"/>
+      <details key="end" value="1419"/>
+      <details key="line" value="35"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/generateUser/%.5/%.9/%.1/%.3">
+      <details key="start" value="1422"/>
+      <details key="end" value="1445"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/generateUser/%.5/%.9/%.1/%.3/user">
+      <details key="start" value="1422"/>
+      <details key="end" value="1426"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/generateUser/%.5/%.9/%.2">
+      <details key="start" value="1532"/>
+      <details key="end" value="1558"/>
+      <details key="line" value="38"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/generateUser/%.5/%.9/%.3">
+      <details key="start" value="1246"/>
+      <details key="end" value="1286"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/generateUser/%.5/%.9/%.3/%">
+      <details key="start" value="1251"/>
+      <details key="end" value="1285"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/generateUser/%.5/%.9/%.3/%/%">
+      <details key="start" value="1251"/>
+      <details key="end" value="1274"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/generateUser/%.5/%.9/%.3/%/%/user">
+      <details key="start" value="1251"/>
+      <details key="end" value="1255"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/generateUser/%.5/%.10">
+      <details key="start" value="1580"/>
+      <details key="end" value="1598"/>
+      <details key="line" value="40"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/generateUser/%.5/user">
+      <details key="start" value="297"/>
+      <details key="end" value="308"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.68" references="/0/generateUser/%.5/%.11">
+      <details key="start" value="311"/>
+      <details key="end" value="338"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.69" references="/0/generateUser/%.5/%.11/aStreamingService">
+      <details key="start" value="311"/>
+      <details key="end" value="328"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.70" references="/0/generateUser/%.6">
+      <details key="start" value="1613"/>
+      <details key="end" value="1681"/>
+      <details key="line" value="42"/>
+    </eAnnotations>
+    <eAnnotations source="positions.71" references="/0/generateUser/aStreamingService">
+      <details key="start" value="104"/>
+      <details key="end" value="140"/>
+      <details key="line" value="3"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

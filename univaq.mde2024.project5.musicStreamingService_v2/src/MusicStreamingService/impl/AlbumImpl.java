@@ -6,8 +6,13 @@ import MusicStreamingService.Album;
 import MusicStreamingService.AlbumTrack;
 import MusicStreamingService.Artist;
 import MusicStreamingService.MusicStreamingServicePackage;
+import MusicStreamingService.MusicStreamingServiceTables;
+
+import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -22,6 +27,21 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.eclipse.ocl.pivot.evaluation.Executor;
+
+import org.eclipse.ocl.pivot.ids.IdResolver;
+
+import org.eclipse.ocl.pivot.library.collection.CollectionSumOperation;
+
+import org.eclipse.ocl.pivot.utilities.PivotUtil;
+import org.eclipse.ocl.pivot.utilities.ValueUtil;
+
+import org.eclipse.ocl.pivot.values.IntegerValue;
+import org.eclipse.ocl.pivot.values.OrderedSetValue;
+import org.eclipse.ocl.pivot.values.SequenceValue;
+
+import org.eclipse.ocl.pivot.values.SequenceValue.Accumulator;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,7 +59,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class AlbumImpl extends NamedElementImpl implements Album {
+public abstract class AlbumImpl extends NamedElementImpl implements Album {
 	/**
 	 * The cached value of the '{@link #getTracks() <em>Tracks</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -217,6 +237,42 @@ public class AlbumImpl extends NamedElementImpl implements Album {
 	 * @generated
 	 */
 	@Override
+	public int calculateTotalDuration() {
+		/**
+		 * tracks->collect(duration)->sum()
+		 */
+		final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+		final /*@NonInvalid*/ List<AlbumTrack> tracks = this.getTracks();
+		final /*@NonInvalid*/ OrderedSetValue BOXED_tracks = idResolver.createOrderedSetOfAll(MusicStreamingServiceTables.ORD_CLSSid_AlbumTrack, tracks);
+		/*@Thrown*/ Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(MusicStreamingServiceTables.SEQ_DATAid_EInt);
+		Iterator<Object> ITERATOR__1 = BOXED_tracks.iterator();
+		/*@NonInvalid*/ SequenceValue collect;
+		while (true) {
+			if (!ITERATOR__1.hasNext()) {
+				collect = accumulator;
+				break;
+			}
+			/*@NonInvalid*/ AlbumTrack _1 = (AlbumTrack)ITERATOR__1.next();
+			/**
+			 * duration
+			 */
+			final /*@NonInvalid*/ int duration = _1.getDuration();
+			final /*@NonInvalid*/ IntegerValue BOXED_duration = ValueUtil.integerValueOf(duration);
+			//
+			accumulator.add(BOXED_duration);
+		}
+		final /*@NonInvalid*/ IntegerValue sum = (IntegerValue)CollectionSumOperation.INSTANCE.evaluate(executor, MusicStreamingServiceTables.DATAid_EInt, collect);
+		final /*@NonInvalid*/ int ECORE_sum = ValueUtil.intValueOf(sum);
+		return ECORE_sum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case MusicStreamingServicePackage.ALBUM__OWNER:
@@ -345,6 +401,20 @@ public class AlbumImpl extends NamedElementImpl implements Album {
 				return getOwner() != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case MusicStreamingServicePackage.ALBUM___CALCULATE_TOTAL_DURATION:
+				return calculateTotalDuration();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

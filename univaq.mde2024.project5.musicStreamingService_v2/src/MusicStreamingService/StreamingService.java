@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link MusicStreamingService.StreamingService#getArtist <em>Artist</em>}</li>
  *   <li>{@link MusicStreamingService.StreamingService#getPodcasts <em>Podcasts</em>}</li>
  *   <li>{@link MusicStreamingService.StreamingService#getPlaylist <em>Playlist</em>}</li>
+ *   <li>{@link MusicStreamingService.StreamingService#getConcert <em>Concert</em>}</li>
  * </ul>
  *
  * @see MusicStreamingService.MusicStreamingServicePackage#getStreamingService()
@@ -71,5 +72,17 @@ public interface StreamingService extends NamedElement {
 	 * @generated
 	 */
 	EList<Playlist> getPlaylist();
+
+	/**
+	 * Returns the value of the '<em><b>Concert</b></em>' containment reference list.
+	 * The list contents are of type {@link MusicStreamingService.Concert}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Concert</em>' containment reference list.
+	 * @see MusicStreamingService.MusicStreamingServicePackage#getStreamingService_Concert()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Concert> getConcert();
 
 } // StreamingService

@@ -7,11 +7,11 @@
 <plugin>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated SpotifyLive -->
+      <!-- @generated Spotify_v3 -->
       <package
-            uri="https://it.univaq.disim.mde.course.project4/MSS"
+            uri="https://it.univaq.disim.mde.course.project5/MSS"
             class="MusicStreamingService.MusicStreamingServicePackage"
-            genModel="model/SpotifyLive.genmodel"/>
+            genModel="model/Spotify_v3.genmodel"/>
    </extension>
 
 </plugin>

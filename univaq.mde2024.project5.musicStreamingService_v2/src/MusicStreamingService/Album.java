@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see MusicStreamingService.MusicStreamingServicePackage#getAlbum()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface Album extends NamedElement {
@@ -43,7 +43,7 @@ public interface Album extends NamedElement {
 	 * @return the value of the '<em>Duration</em>' attribute.
 	 * @see #setDuration(int)
 	 * @see MusicStreamingService.MusicStreamingServicePackage#getAlbum_Duration()
-	 * @model unique="false" required="true" derived="true" ordered="false"
+	 * @model required="true" derived="true"
 	 * @generated
 	 */
 	int getDuration();
@@ -65,7 +65,7 @@ public interface Album extends NamedElement {
 	 * @return the value of the '<em>Img url</em>' attribute.
 	 * @see #setImg_url(String)
 	 * @see MusicStreamingService.MusicStreamingServicePackage#getAlbum_Img_url()
-	 * @model required="true" ordered="false"
+	 * @model required="true"
 	 * @generated
 	 */
 	String getImg_url();
@@ -103,5 +103,14 @@ public interface Album extends NamedElement {
 	 * @generated
 	 */
 	void setOwner(Artist value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='tracks-&gt;collect(duration)-&gt;sum()'"
+	 * @generated
+	 */
+	int calculateTotalDuration();
 
 } // Album

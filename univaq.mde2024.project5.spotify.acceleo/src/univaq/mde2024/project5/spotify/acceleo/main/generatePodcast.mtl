@@ -1,0 +1,40 @@
+[module generatePodcast('https://it.univaq.disim.mde.course.project5/MSS')]
+
+[template public generatePodcast(aStreamingService : StreamingService)]
+<html>
+<head>
+    <title>Podcasts - [aStreamingService.Name/]</title>
+</head>
+<body>
+    <h1>Podcasts in [aStreamingService.Name/]</h1>
+    <ul>
+        [for (podcast : Podcast | aStreamingService.podcasts)]
+            <li>
+                <b>Podcast Name:</b> [podcast.Name/]<br/>
+                <b>Category:</b> [podcast.category/]<br/>
+                <b>Rating:</b> [podcast.rating/]<br/>
+                [if (podcast.img_url <> null and podcast.img_url <> '')]
+                    <img src="[podcast.img_url/]" alt="[podcast.Name/]" width="100"/><br/>
+                [/if]
+                <b>Episodes:</b>
+                <ul>
+                    [for (episode : PodcastEpisode | podcast.episodes)]
+                        <li>
+                            <b>Episode Name:</b> [episode.Name/]<br/>
+                            <b>Description:</b> [episode.description/]<br/>
+                            <b>Date Created:</b> [episode.date_created/]<br/>
+                            [if (episode.transcript <> null and episode.transcript <> '')]
+                                <b>Transcript:</b> [episode.transcript/]<br/>
+                            [/if]
+                            <b>Duration:</b> [episode.duration.div(60) /] min [episode.duration.mod(60) /] sec
+                        </li>
+                    [/for]
+                </ul>
+                <b>Followers:</b> [podcast.followers->size()/]
+            </li>
+        [/for]
+    </ul>
+    <a href="index.html">Back to Index</a>
+</body>
+</html>
+[/template]

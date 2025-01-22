@@ -1,0 +1,46 @@
+[module generateUser('https://it.univaq.disim.mde.course.project5/MSS')]
+
+[template public generateUser(aStreamingService : StreamingService)]
+<html>
+<head>
+    <title>Users in [aStreamingService.Name/]</title>
+</head>
+<body>
+    <h1>Users of [aStreamingService.Name/]</h1>
+    <ul>
+        [for (user : User | aStreamingService.listeners)]
+            <li>
+                <strong>Name:</strong> [user.Name/]<br/>
+                <strong>Username:</strong> [user.username/]<br/>
+                <strong>Email:</strong> [user.email/]<br/>
+                [if (not user.followed_artist->isEmpty())]
+                    <strong>Followed Artists:</strong> 
+                    <ul>
+                        [for (artist : Artist | user.followed_artist)]
+                            <li>[artist.Name/]</li>
+                        [/for]
+                    </ul>
+                [/if]
+                [if (not user.owned_playlist->isEmpty())]
+                    <strong>Owned Playlists:</strong> 
+                    <ul>
+                        [for (playlist : Playlist | user.owned_playlist)]
+                            <li>[playlist.Name/]</li>
+                        [/for]
+                    </ul>
+                [/if]
+                [if (not user.subscribed_podcast->isEmpty())]
+                    <strong>Subscribed Podcasts:</strong> 
+                    <ul>
+                        [for (podcast : Podcast | user.subscribed_podcast)]
+                            <li>[podcast.Name/]</li>
+                        [/for]
+                    </ul>
+                [/if]
+            </li>
+        [/for]
+    </ul>
+    <a href="index.html">Back to Index</a>
+</body>
+</html>
+[/template]

@@ -1,0 +1,49 @@
+[module generateArtist('https://it.univaq.disim.mde.course.project5/MSS')]
+
+[template public generateArtist(aStreamingService : StreamingService)]
+<html>
+<head>
+    <title>Artists - [aStreamingService.Name/]</title>
+</head>
+<body>
+    <h1>Artists on [aStreamingService.Name/]</h1>
+    <ul>
+        [for (artist : Artist | aStreamingService.Artist)]
+            <li>
+                <b>[artist.Name/]</b>
+                <ul>
+                    <li><strong>About:</strong> [artist.about/]</li>
+                    <li><strong>Number of Listeners:</strong> [artist.num_of_listeners/]</li>
+                    [if (artist.img_url <> null and artist.img_url <> '')]
+                        <li><img src="[artist.img_url/]" alt="[artist.Name/]" width="100"/></li>
+                    [/if]
+                    [if (not artist.owned_albums->isEmpty())]
+                        <li><strong>Albums:</strong>
+                            <ul>
+                                [for (album : Album | artist.owned_albums)]
+                                    <li>Album: <a href="[album.Name/].html">[album.Name/]</a> 
+                                        [if (album.img_url <> null and album.img_url <> '')]
+                                            <img src="[album.img_url/]" alt="[album.Name/]" width="50"/>
+                                        [/if]
+                                    </li>
+                                [/for]
+                            </ul>
+                        </li>
+                    [/if]
+                    [if (not artist.owned_solos->isEmpty())]
+                        <li><strong>Single Tracks:</strong>
+                            <ul>
+                                [for (track : SingleTrack | artist.owned_solos)]
+                                    <li>Single Track: [track.Name/]</li>
+                                [/for]
+                            </ul>
+                        </li>
+                    [/if]
+                </ul>
+            </li>
+        [/for]
+    </ul>
+    <a href="index.html">Back to Index</a>
+</body>
+</html>
+[/template]

@@ -2,6 +2,9 @@
  */
 package MusicStreamingService;
 
+import java.util.Map;
+
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -13,7 +16,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link MusicStreamingService.Podcast#getTag <em>Tag</em>}</li>
+ *   <li>{@link MusicStreamingService.Podcast#getCategory <em>Category</em>}</li>
  *   <li>{@link MusicStreamingService.Podcast#getRating <em>Rating</em>}</li>
  *   <li>{@link MusicStreamingService.Podcast#getImg_url <em>Img url</em>}</li>
  *   <li>{@link MusicStreamingService.Podcast#getEpisodes <em>Episodes</em>}</li>
@@ -21,23 +24,23 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see MusicStreamingService.MusicStreamingServicePackage#getPodcast()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='PodcastMustHaveEpisodes'"
  * @generated
  */
 public interface Podcast extends NamedElement {
 	/**
-	 * Returns the value of the '<em><b>Tag</b></em>' attribute list.
-	 * The list contents are of type {@link MusicStreamingService.PodcastTag}.
-	 * The literals are from the enumeration {@link MusicStreamingService.PodcastTag}.
+	 * Returns the value of the '<em><b>Category</b></em>' attribute list.
+	 * The list contents are of type {@link MusicStreamingService.PodcastCategory}.
+	 * The literals are from the enumeration {@link MusicStreamingService.PodcastCategory}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Tag</em>' attribute list.
-	 * @see MusicStreamingService.PodcastTag
-	 * @see MusicStreamingService.MusicStreamingServicePackage#getPodcast_Tag()
+	 * @return the value of the '<em>Category</em>' attribute list.
+	 * @see MusicStreamingService.PodcastCategory
+	 * @see MusicStreamingService.MusicStreamingServicePackage#getPodcast_Category()
 	 * @model required="true"
 	 * @generated
 	 */
-	EList<PodcastTag> getTag();
+	EList<PodcastCategory> getCategory();
 
 	/**
 	 * Returns the value of the '<em><b>Rating</b></em>' attribute.
@@ -86,7 +89,7 @@ public interface Podcast extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Episodes</b></em>' containment reference list.
-	 * The list contents are of type {@link MusicStreamingService.Episodes}.
+	 * The list contents are of type {@link MusicStreamingService.PodcastEpisode}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Episodes</em>' containment reference list.
@@ -94,7 +97,7 @@ public interface Podcast extends NamedElement {
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<Episodes> getEpisodes();
+	EList<PodcastEpisode> getEpisodes();
 
 	/**
 	 * Returns the value of the '<em><b>Followers</b></em>' reference list.
@@ -109,5 +112,13 @@ public interface Podcast extends NamedElement {
 	 * @generated
 	 */
 	EList<User> getFollowers();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='\n    \t\tnot episodes-&gt;isEmpty()'"
+	 * @generated
+	 */
+	boolean PodcastMustHaveEpisodes(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // Podcast

@@ -5,8 +5,9 @@ package MusicStreamingService.impl;
 import MusicStreamingService.Album;
 import MusicStreamingService.AlbumTrack;
 import MusicStreamingService.Artist;
-import MusicStreamingService.Composer;
-import MusicStreamingService.Episodes;
+import MusicStreamingService.AudioTrack;
+import MusicStreamingService.Concert;
+import MusicStreamingService.LiveAlbum;
 import MusicStreamingService.MusicGenre;
 import MusicStreamingService.MusicStreamingServiceFactory;
 import MusicStreamingService.MusicStreamingServicePackage;
@@ -15,17 +16,23 @@ import MusicStreamingService.NamedElement;
 import MusicStreamingService.Order;
 import MusicStreamingService.Playlist;
 import MusicStreamingService.Podcast;
-import MusicStreamingService.PodcastTag;
+import MusicStreamingService.PodcastCategory;
+import MusicStreamingService.PodcastEpisode;
 import MusicStreamingService.SingleTrack;
 import MusicStreamingService.StreamingService;
-import MusicStreamingService.Track;
+import MusicStreamingService.StudioAlbum;
 import MusicStreamingService.User;
+
+import MusicStreamingService.util.MusicStreamingServiceValidator;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EGenericType;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EValidator;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
@@ -55,13 +62,6 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass composerEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass artistEClass = null;
 
 	/**
@@ -69,7 +69,7 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass trackEClass = null;
+	private EClass audioTrackEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -118,7 +118,7 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass episodesEClass = null;
+	private EClass podcastEpisodeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -132,7 +132,28 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum podcastTagEEnum = null;
+	private EClass studioAlbumEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass liveAlbumEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass concertEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum podcastCategoryEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -199,6 +220,16 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 
 		// Initialize created meta-data
 		theMusicStreamingServicePackage.initializePackageContents();
+
+		// Register package validator
+		EValidator.Registry.INSTANCE.put
+			(theMusicStreamingServicePackage,
+			 new EValidator.Descriptor() {
+				 @Override
+				 public EValidator getEValidator() {
+					 return MusicStreamingServiceValidator.INSTANCE;
+				 }
+			 });
 
 		// Mark meta-data to indicate it can't be changed
 		theMusicStreamingServicePackage.freeze();
@@ -284,8 +315,8 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 	 * @generated
 	 */
 	@Override
-	public EClass getComposer() {
-		return composerEClass;
+	public EReference getStreamingService_Concert() {
+		return (EReference)streamingServiceEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -374,8 +405,8 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 	 * @generated
 	 */
 	@Override
-	public EClass getTrack() {
-		return trackEClass;
+	public EOperation getArtist__MustHaveAlbumOrSolo__DiagnosticChain_Map() {
+		return artistEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -384,8 +415,18 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTrack_Duration() {
-		return (EAttribute)trackEClass.getEStructuralFeatures().get(0);
+	public EClass getAudioTrack() {
+		return audioTrackEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getAudioTrack_Duration() {
+		return (EAttribute)audioTrackEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -504,6 +545,16 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 	 * @generated
 	 */
 	@Override
+	public EOperation getAlbum__CalculateTotalDuration() {
+		return albumEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getUser() {
 		return userEClass;
 	}
@@ -574,6 +625,16 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 	 * @generated
 	 */
 	@Override
+	public EOperation getUser__GetPodcastsByTag__PodcastCategory() {
+		return userEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getPlaylist() {
 		return playlistEClass;
 	}
@@ -634,6 +695,16 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 	 * @generated
 	 */
 	@Override
+	public EOperation getPlaylist__PlaylistMustHaveTracks__DiagnosticChain_Map() {
+		return playlistEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getPodcast() {
 		return podcastEClass;
 	}
@@ -644,7 +715,7 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 	 * @generated
 	 */
 	@Override
-	public EAttribute getPodcast_Tag() {
+	public EAttribute getPodcast_Category() {
 		return (EAttribute)podcastEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -694,8 +765,8 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 	 * @generated
 	 */
 	@Override
-	public EClass getEpisodes() {
-		return episodesEClass;
+	public EOperation getPodcast__PodcastMustHaveEpisodes__DiagnosticChain_Map() {
+		return podcastEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -704,8 +775,8 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 	 * @generated
 	 */
 	@Override
-	public EAttribute getEpisodes_Date_created() {
-		return (EAttribute)episodesEClass.getEStructuralFeatures().get(0);
+	public EClass getPodcastEpisode() {
+		return podcastEpisodeEClass;
 	}
 
 	/**
@@ -714,8 +785,8 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 	 * @generated
 	 */
 	@Override
-	public EAttribute getEpisodes_Transcript() {
-		return (EAttribute)episodesEClass.getEStructuralFeatures().get(1);
+	public EAttribute getPodcastEpisode_Date_created() {
+		return (EAttribute)podcastEpisodeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -724,8 +795,18 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 	 * @generated
 	 */
 	@Override
-	public EAttribute getEpisodes_Description() {
-		return (EAttribute)episodesEClass.getEStructuralFeatures().get(2);
+	public EAttribute getPodcastEpisode_Transcript() {
+		return (EAttribute)podcastEpisodeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPodcastEpisode_Description() {
+		return (EAttribute)podcastEpisodeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -754,8 +835,88 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 	 * @generated
 	 */
 	@Override
-	public EEnum getPodcastTag() {
-		return podcastTagEEnum;
+	public EClass getStudioAlbum() {
+		return studioAlbumEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getStudioAlbum_RecordingStudio() {
+		return (EAttribute)studioAlbumEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getLiveAlbum() {
+		return liveAlbumEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getLiveAlbum_EventLocation() {
+		return (EAttribute)liveAlbumEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getConcert() {
+		return concertEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getConcert_Date() {
+		return (EAttribute)concertEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getConcert_Location() {
+		return (EAttribute)concertEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getConcert_Artists() {
+		return (EReference)concertEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getPodcastCategory() {
+		return podcastCategoryEEnum;
 	}
 
 	/**
@@ -815,8 +976,7 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 		createEReference(streamingServiceEClass, STREAMING_SERVICE__ARTIST);
 		createEReference(streamingServiceEClass, STREAMING_SERVICE__PODCASTS);
 		createEReference(streamingServiceEClass, STREAMING_SERVICE__PLAYLIST);
-
-		composerEClass = createEClass(COMPOSER);
+		createEReference(streamingServiceEClass, STREAMING_SERVICE__CONCERT);
 
 		artistEClass = createEClass(ARTIST);
 		createEAttribute(artistEClass, ARTIST__ABOUT);
@@ -826,9 +986,10 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 		createEReference(artistEClass, ARTIST__OWNED_ALBUMS);
 		createEReference(artistEClass, ARTIST__OWNED_SOLOS);
 		createEReference(artistEClass, ARTIST__FEATURED_IN);
+		createEOperation(artistEClass, ARTIST___MUST_HAVE_ALBUM_OR_SOLO__DIAGNOSTICCHAIN_MAP);
 
-		trackEClass = createEClass(TRACK);
-		createEAttribute(trackEClass, TRACK__DURATION);
+		audioTrackEClass = createEClass(AUDIO_TRACK);
+		createEAttribute(audioTrackEClass, AUDIO_TRACK__DURATION);
 
 		musicTrackEClass = createEClass(MUSIC_TRACK);
 		createEAttribute(musicTrackEClass, MUSIC_TRACK__GENRE);
@@ -843,6 +1004,7 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 		createEAttribute(albumEClass, ALBUM__DURATION);
 		createEAttribute(albumEClass, ALBUM__IMG_URL);
 		createEReference(albumEClass, ALBUM__OWNER);
+		createEOperation(albumEClass, ALBUM___CALCULATE_TOTAL_DURATION);
 
 		userEClass = createEClass(USER);
 		createEAttribute(userEClass, USER__USERNAME);
@@ -851,6 +1013,7 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 		createEReference(userEClass, USER__FOLLOWED_ARTIST);
 		createEReference(userEClass, USER__OWNED_PLAYLIST);
 		createEReference(userEClass, USER__SUBSCRIBED_PODCAST);
+		createEOperation(userEClass, USER___GET_PODCASTS_BY_TAG__PODCASTCATEGORY);
 
 		playlistEClass = createEClass(PLAYLIST);
 		createEReference(playlistEClass, PLAYLIST__TRACKS);
@@ -858,24 +1021,37 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 		createEAttribute(playlistEClass, PLAYLIST__DURATION);
 		createEAttribute(playlistEClass, PLAYLIST__ORDER);
 		createEReference(playlistEClass, PLAYLIST__OWNERS);
+		createEOperation(playlistEClass, PLAYLIST___PLAYLIST_MUST_HAVE_TRACKS__DIAGNOSTICCHAIN_MAP);
 
 		podcastEClass = createEClass(PODCAST);
-		createEAttribute(podcastEClass, PODCAST__TAG);
+		createEAttribute(podcastEClass, PODCAST__CATEGORY);
 		createEAttribute(podcastEClass, PODCAST__RATING);
 		createEAttribute(podcastEClass, PODCAST__IMG_URL);
 		createEReference(podcastEClass, PODCAST__EPISODES);
 		createEReference(podcastEClass, PODCAST__FOLLOWERS);
+		createEOperation(podcastEClass, PODCAST___PODCAST_MUST_HAVE_EPISODES__DIAGNOSTICCHAIN_MAP);
 
-		episodesEClass = createEClass(EPISODES);
-		createEAttribute(episodesEClass, EPISODES__DATE_CREATED);
-		createEAttribute(episodesEClass, EPISODES__TRANSCRIPT);
-		createEAttribute(episodesEClass, EPISODES__DESCRIPTION);
+		podcastEpisodeEClass = createEClass(PODCAST_EPISODE);
+		createEAttribute(podcastEpisodeEClass, PODCAST_EPISODE__DATE_CREATED);
+		createEAttribute(podcastEpisodeEClass, PODCAST_EPISODE__TRANSCRIPT);
+		createEAttribute(podcastEpisodeEClass, PODCAST_EPISODE__DESCRIPTION);
 
 		albumTrackEClass = createEClass(ALBUM_TRACK);
 		createEAttribute(albumTrackEClass, ALBUM_TRACK__POSITION);
 
+		studioAlbumEClass = createEClass(STUDIO_ALBUM);
+		createEAttribute(studioAlbumEClass, STUDIO_ALBUM__RECORDING_STUDIO);
+
+		liveAlbumEClass = createEClass(LIVE_ALBUM);
+		createEAttribute(liveAlbumEClass, LIVE_ALBUM__EVENT_LOCATION);
+
+		concertEClass = createEClass(CONCERT);
+		createEAttribute(concertEClass, CONCERT__DATE);
+		createEAttribute(concertEClass, CONCERT__LOCATION);
+		createEReference(concertEClass, CONCERT__ARTISTS);
+
 		// Create enums
-		podcastTagEEnum = createEEnum(PODCAST_TAG);
+		podcastCategoryEEnum = createEEnum(PODCAST_CATEGORY);
 		orderEEnum = createEEnum(ORDER);
 		musicGenreEEnum = createEEnum(MUSIC_GENRE);
 	}
@@ -909,17 +1085,19 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 
 		// Add supertypes to classes
 		streamingServiceEClass.getESuperTypes().add(this.getNamedElement());
-		composerEClass.getESuperTypes().add(this.getNamedElement());
 		artistEClass.getESuperTypes().add(this.getNamedElement());
-		trackEClass.getESuperTypes().add(this.getNamedElement());
-		musicTrackEClass.getESuperTypes().add(this.getTrack());
+		audioTrackEClass.getESuperTypes().add(this.getNamedElement());
+		musicTrackEClass.getESuperTypes().add(this.getAudioTrack());
 		singleTrackEClass.getESuperTypes().add(this.getMusicTrack());
 		albumEClass.getESuperTypes().add(this.getNamedElement());
 		userEClass.getESuperTypes().add(this.getNamedElement());
 		playlistEClass.getESuperTypes().add(this.getNamedElement());
 		podcastEClass.getESuperTypes().add(this.getNamedElement());
-		episodesEClass.getESuperTypes().add(this.getTrack());
+		podcastEpisodeEClass.getESuperTypes().add(this.getAudioTrack());
 		albumTrackEClass.getESuperTypes().add(this.getMusicTrack());
+		studioAlbumEClass.getESuperTypes().add(this.getAlbum());
+		liveAlbumEClass.getESuperTypes().add(this.getAlbum());
+		concertEClass.getESuperTypes().add(this.getNamedElement());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -930,73 +1108,115 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 		initEReference(getStreamingService_Artist(), this.getArtist(), null, "Artist", null, 1, -1, StreamingService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStreamingService_Podcasts(), this.getPodcast(), null, "podcasts", null, 0, -1, StreamingService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStreamingService_Playlist(), this.getPlaylist(), null, "Playlist", null, 0, -1, StreamingService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(composerEClass, Composer.class, "Composer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getStreamingService_Concert(), this.getConcert(), null, "Concert", null, 0, -1, StreamingService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(artistEClass, Artist.class, "Artist", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getArtist_About(), ecorePackage.getEString(), "about", "About the artist", 1, 1, Artist.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getArtist_About(), ecorePackage.getEString(), "about", "About the artist", 1, 1, Artist.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getArtist_Followers(), this.getUser(), this.getUser_Followed_artist(), "followers", null, 0, -1, Artist.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEAttribute(getArtist_Img_url(), ecorePackage.getEString(), "img_url", null, 0, 1, Artist.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getArtist_Num_of_listeners(), ecorePackage.getEInt(), "num_of_listeners", null, 1, 1, Artist.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getArtist_Num_of_listeners(), ecorePackage.getEInt(), "num_of_listeners", null, 0, 1, Artist.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getArtist_Owned_albums(), this.getAlbum(), this.getAlbum_Owner(), "owned_albums", null, 0, -1, Artist.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getArtist_Owned_solos(), this.getSingleTrack(), this.getSingleTrack_Owner(), "owned_solos", null, 0, -1, Artist.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getArtist_Featured_in(), this.getMusicTrack(), this.getMusicTrack_Featured_artist(), "featured_in", null, 0, 1, Artist.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(trackEClass, Track.class, "Track", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTrack_Duration(), ecorePackage.getEInt(), "duration", "1", 1, 1, Track.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		EOperation op = initEOperation(getArtist__MustHaveAlbumOrSolo__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "MustHaveAlbumOrSolo", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EGenericType g1 = createEGenericType(ecorePackage.getEMap());
+		EGenericType g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(audioTrackEClass, AudioTrack.class, "AudioTrack", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAudioTrack_Duration(), ecorePackage.getEInt(), "duration", "1", 1, 1, AudioTrack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(musicTrackEClass, MusicTrack.class, "MusicTrack", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMusicTrack_Genre(), this.getMusicGenre(), "genre", null, 1, -1, MusicTrack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMusicTrack_Lyrics(), ecorePackage.getEString(), "lyrics", null, 0, 1, MusicTrack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getMusicTrack_Lyrics(), ecorePackage.getEString(), "lyrics", null, 0, 1, MusicTrack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMusicTrack_Featured_artist(), this.getArtist(), this.getArtist_Featured_in(), "featured_artist", null, 0, -1, MusicTrack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(singleTrackEClass, SingleTrack.class, "SingleTrack", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSingleTrack_Owner(), this.getArtist(), this.getArtist_Owned_solos(), "owner", null, 1, 1, SingleTrack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(albumEClass, Album.class, "Album", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(albumEClass, Album.class, "Album", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAlbum_Tracks(), this.getAlbumTrack(), null, "tracks", null, 1, -1, Album.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAlbum_Duration(), ecorePackage.getEInt(), "duration", null, 1, 1, Album.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getAlbum_Img_url(), ecorePackage.getEString(), "img_url", null, 1, 1, Album.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getAlbum_Duration(), ecorePackage.getEInt(), "duration", null, 1, 1, Album.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAlbum_Img_url(), ecorePackage.getEString(), "img_url", null, 1, 1, Album.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAlbum_Owner(), this.getArtist(), this.getArtist_Owned_albums(), "owner", null, 1, 1, Album.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getAlbum__CalculateTotalDuration(), ecorePackage.getEInt(), "calculateTotalDuration", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(userEClass, User.class, "User", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getUser_Username(), ecorePackage.getEString(), "username", null, 1, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getUser_Email(), ecorePackage.getEString(), "email", null, 1, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_Password(), ecorePackage.getEString(), "password", null, 1, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getUser_Followed_artist(), this.getArtist(), this.getArtist_Followers(), "followed_artist", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Password(), ecorePackage.getEString(), "password", null, 1, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUser_Followed_artist(), this.getArtist(), this.getArtist_Followers(), "followed_artist", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUser_Owned_playlist(), this.getPlaylist(), this.getPlaylist_Owners(), "owned_playlist", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUser_Subscribed_podcast(), this.getPodcast(), this.getPodcast_Followers(), "subscribed_podcast", null, 0, -1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		op = initEOperation(getUser__GetPodcastsByTag__PodcastCategory(), this.getPodcast(), "getPodcastsByTag", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getPodcastCategory(), "tag", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(playlistEClass, Playlist.class, "Playlist", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPlaylist_Tracks(), this.getTrack(), null, "tracks", null, 1, -1, Playlist.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPlaylist_Num_of_tracks(), ecorePackage.getEInt(), "num_of_tracks", null, 1, 1, Playlist.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPlaylist_Duration(), ecorePackage.getEInt(), "duration", null, 1, 1, Playlist.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, !IS_ORDERED);
+		initEReference(getPlaylist_Tracks(), this.getAudioTrack(), null, "tracks", null, 1, -1, Playlist.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlaylist_Num_of_tracks(), ecorePackage.getEInt(), "num_of_tracks", null, 1, 1, Playlist.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlaylist_Duration(), ecorePackage.getEInt(), "duration", null, 1, 1, Playlist.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPlaylist_Order(), this.getOrder(), "order", null, 1, 1, Playlist.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPlaylist_Owners(), this.getUser(), this.getUser_Owned_playlist(), "owners", null, 1, -1, Playlist.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		op = initEOperation(getPlaylist__PlaylistMustHaveTracks__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "PlaylistMustHaveTracks", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(podcastEClass, Podcast.class, "Podcast", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPodcast_Tag(), this.getPodcastTag(), "tag", null, 1, -1, Podcast.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPodcast_Category(), this.getPodcastCategory(), "category", null, 1, -1, Podcast.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPodcast_Rating(), ecorePackage.getEFloat(), "rating", "0", 1, 1, Podcast.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPodcast_Img_url(), ecorePackage.getEString(), "img_url", null, 0, 1, Podcast.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPodcast_Episodes(), this.getEpisodes(), null, "episodes", null, 1, -1, Podcast.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPodcast_Episodes(), this.getPodcastEpisode(), null, "episodes", null, 1, -1, Podcast.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPodcast_Followers(), this.getUser(), this.getUser_Subscribed_podcast(), "followers", null, 0, -1, Podcast.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(episodesEClass, Episodes.class, "Episodes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEpisodes_Date_created(), ecorePackage.getEDate(), "date_created", "2024-06-17T10:15:30", 1, 1, Episodes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEpisodes_Transcript(), ecorePackage.getEString(), "transcript", null, 0, 1, Episodes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEpisodes_Description(), ecorePackage.getEString(), "description", null, 1, 1, Episodes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		op = initEOperation(getPodcast__PodcastMustHaveEpisodes__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "PodcastMustHaveEpisodes", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(podcastEpisodeEClass, PodcastEpisode.class, "PodcastEpisode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPodcastEpisode_Date_created(), ecorePackage.getEDate(), "date_created", "2024-06-17T10:15:30", 1, 1, PodcastEpisode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPodcastEpisode_Transcript(), ecorePackage.getEString(), "transcript", null, 0, 1, PodcastEpisode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPodcastEpisode_Description(), ecorePackage.getEString(), "description", null, 1, 1, PodcastEpisode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(albumTrackEClass, AlbumTrack.class, "AlbumTrack", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAlbumTrack_Position(), ecorePackage.getEInt(), "position", null, 1, 1, AlbumTrack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(studioAlbumEClass, StudioAlbum.class, "StudioAlbum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStudioAlbum_RecordingStudio(), ecorePackage.getEString(), "recordingStudio", null, 1, 1, StudioAlbum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(liveAlbumEClass, LiveAlbum.class, "LiveAlbum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLiveAlbum_EventLocation(), ecorePackage.getEString(), "eventLocation", null, 1, 1, LiveAlbum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(concertEClass, Concert.class, "Concert", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getConcert_Date(), ecorePackage.getEDate(), "date", null, 1, 1, Concert.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConcert_Location(), ecorePackage.getEString(), "location", null, 1, 1, Concert.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConcert_Artists(), this.getArtist(), null, "Artists", null, 1, -1, Concert.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
-		initEEnum(podcastTagEEnum, PodcastTag.class, "PodcastTag");
-		addEEnumLiteral(podcastTagEEnum, PodcastTag.FILM);
-		addEEnumLiteral(podcastTagEEnum, PodcastTag.LIFESTYLE);
-		addEEnumLiteral(podcastTagEEnum, PodcastTag.EDUCATION);
-		addEEnumLiteral(podcastTagEEnum, PodcastTag.POLITICS);
-		addEEnumLiteral(podcastTagEEnum, PodcastTag.SCIENCE);
-		addEEnumLiteral(podcastTagEEnum, PodcastTag.TECHNOLOGY);
+		initEEnum(podcastCategoryEEnum, PodcastCategory.class, "PodcastCategory");
+		addEEnumLiteral(podcastCategoryEEnum, PodcastCategory.FILM);
+		addEEnumLiteral(podcastCategoryEEnum, PodcastCategory.LIFESTYLE);
+		addEEnumLiteral(podcastCategoryEEnum, PodcastCategory.EDUCATION);
+		addEEnumLiteral(podcastCategoryEEnum, PodcastCategory.POLITICS);
+		addEEnumLiteral(podcastCategoryEEnum, PodcastCategory.SCIENCE);
+		addEEnumLiteral(podcastCategoryEEnum, PodcastCategory.TECHNOLOGY);
 
 		initEEnum(orderEEnum, Order.class, "Order");
 		addEEnumLiteral(orderEEnum, Order.DEFAULT);
@@ -1004,14 +1224,93 @@ public class MusicStreamingServicePackageImpl extends EPackageImpl implements Mu
 		addEEnumLiteral(orderEEnum, Order.DATE_ADDED);
 
 		initEEnum(musicGenreEEnum, MusicGenre.class, "MusicGenre");
-		addEEnumLiteral(musicGenreEEnum, MusicGenre.POP);
 		addEEnumLiteral(musicGenreEEnum, MusicGenre.REGGAE);
 		addEEnumLiteral(musicGenreEEnum, MusicGenre.HIP_HOP);
 		addEEnumLiteral(musicGenreEEnum, MusicGenre.ROCK);
 		addEEnumLiteral(musicGenreEEnum, MusicGenre.AFROBEAT);
+		addEEnumLiteral(musicGenreEEnum, MusicGenre.POP);
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
+		createPivotAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";
+		addAnnotation
+		  (this,
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (artistEClass,
+		   source,
+		   new String[] {
+			   "constraints", "MustHaveAlbumOrSolo"
+		   });
+		addAnnotation
+		  (playlistEClass,
+		   source,
+		   new String[] {
+			   "constraints", "PlaylistMustHaveTracks"
+		   });
+		addAnnotation
+		  (podcastEClass,
+		   source,
+		   new String[] {
+			   "constraints", "PodcastMustHaveEpisodes"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createPivotAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
+		addAnnotation
+		  (getArtist__MustHaveAlbumOrSolo__DiagnosticChain_Map(),
+		   source,
+		   new String[] {
+			   "body", "\n            owned_albums->size()>0 or owned_solos->size()>0"
+		   });
+		addAnnotation
+		  (getAlbum__CalculateTotalDuration(),
+		   source,
+		   new String[] {
+			   "body", "tracks->collect(duration)->sum()"
+		   });
+		addAnnotation
+		  (getUser__GetPodcastsByTag__PodcastCategory(),
+		   source,
+		   new String[] {
+			   "body", "subscribed_podcast->select(p | p.category->includes(tag))->asOrderedSet()"
+		   });
+		addAnnotation
+		  (getPlaylist__PlaylistMustHaveTracks__DiagnosticChain_Map(),
+		   source,
+		   new String[] {
+			   "body", "\n            not tracks->isEmpty()"
+		   });
+		addAnnotation
+		  (getPodcast__PodcastMustHaveEpisodes__DiagnosticChain_Map(),
+		   source,
+		   new String[] {
+			   "body", "\n    \t\tnot episodes->isEmpty()"
+		   });
 	}
 
 } //MusicStreamingServicePackageImpl

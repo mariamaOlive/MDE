@@ -79,13 +79,6 @@ public class MusicStreamingServiceSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case MusicStreamingServicePackage.COMPOSER: {
-				Composer composer = (Composer)theEObject;
-				T result = caseComposer(composer);
-				if (result == null) result = caseNamedElement(composer);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case MusicStreamingServicePackage.ARTIST: {
 				Artist artist = (Artist)theEObject;
 				T result = caseArtist(artist);
@@ -93,17 +86,17 @@ public class MusicStreamingServiceSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case MusicStreamingServicePackage.TRACK: {
-				Track track = (Track)theEObject;
-				T result = caseTrack(track);
-				if (result == null) result = caseNamedElement(track);
+			case MusicStreamingServicePackage.AUDIO_TRACK: {
+				AudioTrack audioTrack = (AudioTrack)theEObject;
+				T result = caseAudioTrack(audioTrack);
+				if (result == null) result = caseNamedElement(audioTrack);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case MusicStreamingServicePackage.MUSIC_TRACK: {
 				MusicTrack musicTrack = (MusicTrack)theEObject;
 				T result = caseMusicTrack(musicTrack);
-				if (result == null) result = caseTrack(musicTrack);
+				if (result == null) result = caseAudioTrack(musicTrack);
 				if (result == null) result = caseNamedElement(musicTrack);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -112,7 +105,7 @@ public class MusicStreamingServiceSwitch<T> extends Switch<T> {
 				SingleTrack singleTrack = (SingleTrack)theEObject;
 				T result = caseSingleTrack(singleTrack);
 				if (result == null) result = caseMusicTrack(singleTrack);
-				if (result == null) result = caseTrack(singleTrack);
+				if (result == null) result = caseAudioTrack(singleTrack);
 				if (result == null) result = caseNamedElement(singleTrack);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -145,11 +138,11 @@ public class MusicStreamingServiceSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case MusicStreamingServicePackage.EPISODES: {
-				Episodes episodes = (Episodes)theEObject;
-				T result = caseEpisodes(episodes);
-				if (result == null) result = caseTrack(episodes);
-				if (result == null) result = caseNamedElement(episodes);
+			case MusicStreamingServicePackage.PODCAST_EPISODE: {
+				PodcastEpisode podcastEpisode = (PodcastEpisode)theEObject;
+				T result = casePodcastEpisode(podcastEpisode);
+				if (result == null) result = caseAudioTrack(podcastEpisode);
+				if (result == null) result = caseNamedElement(podcastEpisode);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -157,8 +150,31 @@ public class MusicStreamingServiceSwitch<T> extends Switch<T> {
 				AlbumTrack albumTrack = (AlbumTrack)theEObject;
 				T result = caseAlbumTrack(albumTrack);
 				if (result == null) result = caseMusicTrack(albumTrack);
-				if (result == null) result = caseTrack(albumTrack);
+				if (result == null) result = caseAudioTrack(albumTrack);
 				if (result == null) result = caseNamedElement(albumTrack);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case MusicStreamingServicePackage.STUDIO_ALBUM: {
+				StudioAlbum studioAlbum = (StudioAlbum)theEObject;
+				T result = caseStudioAlbum(studioAlbum);
+				if (result == null) result = caseAlbum(studioAlbum);
+				if (result == null) result = caseNamedElement(studioAlbum);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case MusicStreamingServicePackage.LIVE_ALBUM: {
+				LiveAlbum liveAlbum = (LiveAlbum)theEObject;
+				T result = caseLiveAlbum(liveAlbum);
+				if (result == null) result = caseAlbum(liveAlbum);
+				if (result == null) result = caseNamedElement(liveAlbum);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case MusicStreamingServicePackage.CONCERT: {
+				Concert concert = (Concert)theEObject;
+				T result = caseConcert(concert);
+				if (result == null) result = caseNamedElement(concert);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -197,21 +213,6 @@ public class MusicStreamingServiceSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Composer</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Composer</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseComposer(Composer object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Artist</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -227,17 +228,17 @@ public class MusicStreamingServiceSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Track</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Audio Track</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Track</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Audio Track</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseTrack(Track object) {
+	public T caseAudioTrack(AudioTrack object) {
 		return null;
 	}
 
@@ -332,17 +333,17 @@ public class MusicStreamingServiceSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Episodes</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Podcast Episode</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Episodes</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Podcast Episode</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseEpisodes(Episodes object) {
+	public T casePodcastEpisode(PodcastEpisode object) {
 		return null;
 	}
 
@@ -358,6 +359,51 @@ public class MusicStreamingServiceSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAlbumTrack(AlbumTrack object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Studio Album</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Studio Album</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStudioAlbum(StudioAlbum object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Live Album</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Live Album</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLiveAlbum(LiveAlbum object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Concert</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Concert</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConcert(Concert object) {
 		return null;
 	}
 

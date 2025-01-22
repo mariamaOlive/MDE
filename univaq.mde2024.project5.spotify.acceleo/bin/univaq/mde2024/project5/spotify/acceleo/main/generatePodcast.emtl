@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="generatePodcast" nsURI="univaq::mde2024::project5::spotify::acceleo::main::generatePodcast" endHeaderPosition="208">
+    <input>
+      <takesTypesFrom href="https://it.univaq.disim.mde.course.project5/MSS#/"/>
+    </input>
+    <ownedModuleElement xsi:type="mtl:Template" name="generatePodcast" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;html>&#xA;&lt;head>&#xA;    &lt;title>Podcasts - "/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="aStreamingService" referredVariable="/0/generatePodcast/aStreamingService">
+          <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//NamedElement/Name"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;/title>&#xA;&lt;/head>&#xA;&lt;body>&#xA;    &lt;h1>Podcasts in "/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="aStreamingService" referredVariable="/0/generatePodcast/aStreamingService">
+          <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//NamedElement/Name"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;/h1>&#xA;    &lt;ul>&#xA;"/>
+      <body xsi:type="mtl:ForBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="            &lt;li>&#xA;                &lt;b>Podcast Name:&lt;/b> "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="podcast" referredVariable="/0/generatePodcast/%.5/podcast">
+            <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//NamedElement/Name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;br/>&#xA;                &lt;b>Category:&lt;/b> "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp" eType="/8/OrderedSet(PodcastCategory)">
+          <source xsi:type="ocl.ecore:VariableExp" name="podcast" referredVariable="/0/generatePodcast/%.5/podcast">
+            <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast/category"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;br/>&#xA;                &lt;b>Rating:&lt;/b> "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="podcast" referredVariable="/0/generatePodcast/%.5/podcast">
+            <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast/rating"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;br/>&#xA;"/>
+        <body xsi:type="mtl:IfBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="                    &lt;img src=&quot;"/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="podcast" referredVariable="/0/generatePodcast/%.5/podcast">
+              <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast/img_url"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot; alt=&quot;"/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="podcast" referredVariable="/0/generatePodcast/%.5/podcast">
+              <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//NamedElement/Name"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot; width=&quot;100&quot;/>&lt;br/>&#xA;"/>
+          <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+            <source xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="podcast" referredVariable="/0/generatePodcast/%.5/podcast">
+                  <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast/img_url"/>
+              </source>
+              <argument xsi:type="ocl.ecore:NullLiteralExp">
+                <eType xsi:type="ocl.ecore:VoidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclVoid"/>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/%3C%3E"/>
+            </source>
+            <argument xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="podcast" referredVariable="/0/generatePodcast/%.5/podcast">
+                  <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast/img_url"/>
+              </source>
+              <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/%3C%3E"/>
+            </argument>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/and"/>
+          </ifExpr>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="                &lt;b>Episodes:&lt;/b>&#xA;                &lt;ul>&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="                        &lt;li>&#xA;                            &lt;b>Episode Name:&lt;/b> "/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="episode" referredVariable="/0/generatePodcast/%.5/%.9/episode">
+              <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//PodcastEpisode"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//NamedElement/Name"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;br/>&#xA;                            &lt;b>Description:&lt;/b> "/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="episode" referredVariable="/0/generatePodcast/%.5/%.9/episode">
+              <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//PodcastEpisode"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//PodcastEpisode/description"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;br/>&#xA;                            &lt;b>Date Created:&lt;/b> "/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="episode" referredVariable="/0/generatePodcast/%.5/%.9/episode">
+              <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//PodcastEpisode"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//PodcastEpisode/date_created"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;br/>&#xA;"/>
+          <body xsi:type="mtl:IfBlock">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="                                &lt;b>Transcript:&lt;/b> "/>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="episode" referredVariable="/0/generatePodcast/%.5/%.9/episode">
+                <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//PodcastEpisode"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//PodcastEpisode/transcript"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;br/>&#xA;"/>
+            <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              <source xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="episode" referredVariable="/0/generatePodcast/%.5/%.9/episode">
+                    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//PodcastEpisode"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//PodcastEpisode/transcript"/>
+                </source>
+                <argument xsi:type="ocl.ecore:NullLiteralExp">
+                  <eType xsi:type="ocl.ecore:VoidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclVoid"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/%3C%3E"/>
+              </source>
+              <argument xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="episode" referredVariable="/0/generatePodcast/%.5/%.9/episode">
+                    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//PodcastEpisode"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//PodcastEpisode/transcript"/>
+                </source>
+                <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/%3C%3E"/>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/and"/>
+            </ifExpr>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="                            &lt;b>Duration:&lt;/b> "/>
+          <body xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="episode" referredVariable="/0/generatePodcast/%.5/%.9/episode">
+                <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//PodcastEpisode"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//AudioTrack/duration"/>
+            </source>
+            <argument xsi:type="ocl.ecore:IntegerLiteralExp" integerSymbol="60">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+            </argument>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer_Class/div"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" min "/>
+          <body xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="episode" referredVariable="/0/generatePodcast/%.5/%.9/episode">
+                <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//PodcastEpisode"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="https://it.univaq.disim.mde.course.project5/MSS#//AudioTrack/duration"/>
+            </source>
+            <argument xsi:type="ocl.ecore:IntegerLiteralExp" integerSymbol="60">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+            </argument>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer_Class/mod"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" sec&#xA;                        &lt;/li>&#xA;"/>
+          <loopVariable name="episode">
+            <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//PodcastEpisode"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/8/OrderedSet(PodcastEpisode)">
+            <source xsi:type="ocl.ecore:VariableExp" name="podcast" referredVariable="/0/generatePodcast/%.5/podcast">
+              <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast/episodes"/>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="                &lt;/ul>&#xA;                &lt;b>Followers:&lt;/b> "/>
+        <body xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp" eType="/8/OrderedSet(User)">
+            <source xsi:type="ocl.ecore:VariableExp" name="podcast" referredVariable="/0/generatePodcast/%.5/podcast">
+              <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast/followers"/>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)_Class/size"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;            &lt;/li>&#xA;"/>
+        <loopVariable name="podcast">
+          <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+        </loopVariable>
+        <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/8/OrderedSet(Podcast)">
+          <source xsi:type="ocl.ecore:VariableExp" name="aStreamingService" referredVariable="/0/generatePodcast/aStreamingService">
+            <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService"/>
+          </source>
+          <referredProperty xsi:type="ecore:EReference" href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService/podcasts"/>
+        </iterSet>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="    &lt;/ul>&#xA;    &lt;a href=&quot;index.html&quot;>Back to Index&lt;/a>&#xA;&lt;/body>&#xA;&lt;/html>"/>
+      <parameter name="aStreamingService">
+        <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generatePodcast">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generatePodcast"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aStreamingService">
+          <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MusicStreamingService_StreamingService_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Podcast)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(PodcastCategory)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EEnum" href="https://it.univaq.disim.mde.course.project5/MSS#//PodcastCategory"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(PodcastEpisode)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//PodcastEpisode"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(User)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//User"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//PodcastEpisode"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//PodcastEpisode"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//PodcastEpisode"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//PodcastEpisode"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//PodcastEpisode"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//PodcastEpisode"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//PodcastEpisode"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//PodcastEpisode"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//Podcast"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="https://it.univaq.disim.mde.course.project5/MSS#//StreamingService"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generatePodcast">
+      <details key="start" value="77"/>
+      <details key="end" value="1678"/>
+      <details key="line" value="3"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generatePodcast/%">
+      <details key="start" value="149"/>
+      <details key="end" value="185"/>
+      <details key="line" value="4"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generatePodcast/%.1">
+      <details key="start" value="186"/>
+      <details key="end" value="208"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generatePodcast/%.1/aStreamingService">
+      <details key="start" value="186"/>
+      <details key="end" value="203"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generatePodcast/%.2">
+      <details key="start" value="210"/>
+      <details key="end" value="254"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generatePodcast/%.3">
+      <details key="start" value="255"/>
+      <details key="end" value="277"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generatePodcast/%.3/aStreamingService">
+      <details key="start" value="255"/>
+      <details key="end" value="272"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generatePodcast/%.4">
+      <details key="start" value="279"/>
+      <details key="end" value="294"/>
+      <details key="line" value="9"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generatePodcast/%.5">
+      <details key="start" value="302"/>
+      <details key="end" value="1597"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generatePodcast/%.5/%">
+      <details key="start" value="357"/>
+      <details key="end" value="411"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generatePodcast/%.5/%.1">
+      <details key="start" value="412"/>
+      <details key="end" value="424"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generatePodcast/%.5/%.1/podcast">
+      <details key="start" value="412"/>
+      <details key="end" value="419"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generatePodcast/%.5/%.2">
+      <details key="start" value="426"/>
+      <details key="end" value="465"/>
+      <details key="line" value="13"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generatePodcast/%.5/%.3">
+      <details key="start" value="466"/>
+      <details key="end" value="482"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generatePodcast/%.5/%.3/podcast">
+      <details key="start" value="466"/>
+      <details key="end" value="473"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generatePodcast/%.5/%.4">
+      <details key="start" value="484"/>
+      <details key="end" value="521"/>
+      <details key="line" value="14"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generatePodcast/%.5/%.5">
+      <details key="start" value="522"/>
+      <details key="end" value="536"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generatePodcast/%.5/%.5/podcast">
+      <details key="start" value="522"/>
+      <details key="end" value="529"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generatePodcast/%.5/%.6">
+      <details key="start" value="538"/>
+      <details key="end" value="544"/>
+      <details key="line" value="15"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generatePodcast/%.5/%.7">
+      <details key="start" value="560"/>
+      <details key="end" value="729"/>
+      <details key="line" value="16"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generatePodcast/%.5/%.7/%">
+      <details key="start" value="617"/>
+      <details key="end" value="647"/>
+      <details key="line" value="17"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generatePodcast/%.5/%.7/%.1">
+      <details key="start" value="648"/>
+      <details key="end" value="663"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generatePodcast/%.5/%.7/%.1/podcast">
+      <details key="start" value="648"/>
+      <details key="end" value="655"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generatePodcast/%.5/%.7/%.2">
+      <details key="start" value="665"/>
+      <details key="end" value="672"/>
+      <details key="line" value="17"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generatePodcast/%.5/%.7/%.3">
+      <details key="start" value="673"/>
+      <details key="end" value="685"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generatePodcast/%.5/%.7/%.3/podcast">
+      <details key="start" value="673"/>
+      <details key="end" value="680"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generatePodcast/%.5/%.7/%.4">
+      <details key="start" value="687"/>
+      <details key="end" value="708"/>
+      <details key="line" value="17"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generatePodcast/%.5/%.7/%.5">
+      <details key="start" value="564"/>
+      <details key="end" value="615"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generatePodcast/%.5/%.7/%.5/%">
+      <details key="start" value="565"/>
+      <details key="end" value="588"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generatePodcast/%.5/%.7/%.5/%/%">
+      <details key="start" value="565"/>
+      <details key="end" value="580"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generatePodcast/%.5/%.7/%.5/%/%/podcast">
+      <details key="start" value="565"/>
+      <details key="end" value="572"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generatePodcast/%.5/%.7/%.5/%/%.1">
+      <details key="start" value="584"/>
+      <details key="end" value="588"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/generatePodcast/%.5/%.7/%.5/%.1">
+      <details key="start" value="593"/>
+      <details key="end" value="614"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/generatePodcast/%.5/%.7/%.5/%.1/%">
+      <details key="start" value="593"/>
+      <details key="end" value="608"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/generatePodcast/%.5/%.7/%.5/%.1/%/podcast">
+      <details key="start" value="593"/>
+      <details key="end" value="600"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/generatePodcast/%.5/%.7/%.5/%.1/%.1">
+      <details key="start" value="612"/>
+      <details key="end" value="614"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/generatePodcast/%.5/%.8">
+      <details key="start" value="730"/>
+      <details key="end" value="784"/>
+      <details key="line" value="19"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/generatePodcast/%.5/%.9">
+      <details key="start" value="804"/>
+      <details key="end" value="1479"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/generatePodcast/%.5/%.9/%">
+      <details key="start" value="856"/>
+      <details key="end" value="934"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/generatePodcast/%.5/%.9/%.1">
+      <details key="start" value="935"/>
+      <details key="end" value="947"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/generatePodcast/%.5/%.9/%.1/episode">
+      <details key="start" value="935"/>
+      <details key="end" value="942"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/generatePodcast/%.5/%.9/%.2">
+      <details key="start" value="949"/>
+      <details key="end" value="1003"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/generatePodcast/%.5/%.9/%.3">
+      <details key="start" value="1004"/>
+      <details key="end" value="1023"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/generatePodcast/%.5/%.9/%.3/episode">
+      <details key="start" value="1004"/>
+      <details key="end" value="1011"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/generatePodcast/%.5/%.9/%.4">
+      <details key="start" value="1025"/>
+      <details key="end" value="1080"/>
+      <details key="line" value="24"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/generatePodcast/%.5/%.9/%.5">
+      <details key="start" value="1081"/>
+      <details key="end" value="1101"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/generatePodcast/%.5/%.9/%.5/episode">
+      <details key="start" value="1081"/>
+      <details key="end" value="1088"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/generatePodcast/%.5/%.9/%.6">
+      <details key="start" value="1103"/>
+      <details key="end" value="1109"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/generatePodcast/%.5/%.9/%.7">
+      <details key="start" value="1137"/>
+      <details key="end" value="1311"/>
+      <details key="line" value="26"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/generatePodcast/%.5/%.9/%.7/%">
+      <details key="start" value="1200"/>
+      <details key="end" value="1251"/>
+      <details key="line" value="27"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/generatePodcast/%.5/%.9/%.7/%.1">
+      <details key="start" value="1252"/>
+      <details key="end" value="1270"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/generatePodcast/%.5/%.9/%.7/%.1/episode">
+      <details key="start" value="1252"/>
+      <details key="end" value="1259"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/generatePodcast/%.5/%.9/%.7/%.2">
+      <details key="start" value="1272"/>
+      <details key="end" value="1278"/>
+      <details key="line" value="27"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/generatePodcast/%.5/%.9/%.7/%.3">
+      <details key="start" value="1141"/>
+      <details key="end" value="1198"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/generatePodcast/%.5/%.9/%.7/%.3/%">
+      <details key="start" value="1142"/>
+      <details key="end" value="1168"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/generatePodcast/%.5/%.9/%.7/%.3/%/%">
+      <details key="start" value="1142"/>
+      <details key="end" value="1160"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/generatePodcast/%.5/%.9/%.7/%.3/%/%/episode">
+      <details key="start" value="1142"/>
+      <details key="end" value="1149"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/generatePodcast/%.5/%.9/%.7/%.3/%/%.1">
+      <details key="start" value="1164"/>
+      <details key="end" value="1168"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/generatePodcast/%.5/%.9/%.7/%.3/%.1">
+      <details key="start" value="1173"/>
+      <details key="end" value="1197"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/generatePodcast/%.5/%.9/%.7/%.3/%.1/%">
+      <details key="start" value="1173"/>
+      <details key="end" value="1191"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/generatePodcast/%.5/%.9/%.7/%.3/%.1/%/episode">
+      <details key="start" value="1173"/>
+      <details key="end" value="1180"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/generatePodcast/%.5/%.9/%.7/%.3/%.1/%.1">
+      <details key="start" value="1195"/>
+      <details key="end" value="1197"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/generatePodcast/%.5/%.9/%.8">
+      <details key="start" value="1312"/>
+      <details key="end" value="1357"/>
+      <details key="line" value="29"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/generatePodcast/%.5/%.9/%.9">
+      <details key="start" value="1358"/>
+      <details key="end" value="1382"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/generatePodcast/%.5/%.9/%.9/%">
+      <details key="start" value="1358"/>
+      <details key="end" value="1374"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/generatePodcast/%.5/%.9/%.9/%/episode">
+      <details key="start" value="1358"/>
+      <details key="end" value="1365"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/generatePodcast/%.5/%.9/%.9/%.1">
+      <details key="start" value="1379"/>
+      <details key="end" value="1381"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/generatePodcast/%.5/%.9/%.10">
+      <details key="start" value="1385"/>
+      <details key="end" value="1390"/>
+      <details key="line" value="29"/>
+    </eAnnotations>
+    <eAnnotations source="positions.68" references="/0/generatePodcast/%.5/%.9/%.11">
+      <details key="start" value="1391"/>
+      <details key="end" value="1415"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.69" references="/0/generatePodcast/%.5/%.9/%.11/%">
+      <details key="start" value="1391"/>
+      <details key="end" value="1407"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.70" references="/0/generatePodcast/%.5/%.9/%.11/%/episode">
+      <details key="start" value="1391"/>
+      <details key="end" value="1398"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.71" references="/0/generatePodcast/%.5/%.9/%.11/%.1">
+      <details key="start" value="1412"/>
+      <details key="end" value="1414"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.72" references="/0/generatePodcast/%.5/%.9/%.12">
+      <details key="start" value="1418"/>
+      <details key="end" value="1453"/>
+      <details key="line" value="29"/>
+    </eAnnotations>
+    <eAnnotations source="positions.73" references="/0/generatePodcast/%.5/%.9/episode">
+      <details key="start" value="810"/>
+      <details key="end" value="834"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.74" references="/0/generatePodcast/%.5/%.9/%.13">
+      <details key="start" value="837"/>
+      <details key="end" value="853"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.75" references="/0/generatePodcast/%.5/%.9/%.13/podcast">
+      <details key="start" value="837"/>
+      <details key="end" value="844"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.76" references="/0/generatePodcast/%.5/%.10">
+      <details key="start" value="1480"/>
+      <details key="end" value="1536"/>
+      <details key="line" value="32"/>
+    </eAnnotations>
+    <eAnnotations source="positions.77" references="/0/generatePodcast/%.5/%.11">
+      <details key="start" value="1537"/>
+      <details key="end" value="1562"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.78" references="/0/generatePodcast/%.5/%.11/%">
+      <details key="start" value="1537"/>
+      <details key="end" value="1554"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.79" references="/0/generatePodcast/%.5/%.11/%/podcast">
+      <details key="start" value="1537"/>
+      <details key="end" value="1544"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.80" references="/0/generatePodcast/%.5/%.12">
+      <details key="start" value="1564"/>
+      <details key="end" value="1583"/>
+      <details key="line" value="34"/>
+    </eAnnotations>
+    <eAnnotations source="positions.81" references="/0/generatePodcast/%.5/podcast">
+      <details key="start" value="308"/>
+      <details key="end" value="325"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.82" references="/0/generatePodcast/%.5/%.13">
+      <details key="start" value="328"/>
+      <details key="end" value="354"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.83" references="/0/generatePodcast/%.5/%.13/aStreamingService">
+      <details key="start" value="328"/>
+      <details key="end" value="345"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.84" references="/0/generatePodcast/%.6">
+      <details key="start" value="1598"/>
+      <details key="end" value="1666"/>
+      <details key="line" value="36"/>
+    </eAnnotations>
+    <eAnnotations source="positions.85" references="/0/generatePodcast/aStreamingService">
+      <details key="start" value="110"/>
+      <details key="end" value="146"/>
+      <details key="line" value="3"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

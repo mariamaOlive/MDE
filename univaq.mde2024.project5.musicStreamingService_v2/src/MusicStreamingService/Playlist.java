@@ -2,6 +2,9 @@
  */
 package MusicStreamingService;
 
+import java.util.Map;
+
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -21,13 +24,13 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see MusicStreamingService.MusicStreamingServicePackage#getPlaylist()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='PlaylistMustHaveTracks'"
  * @generated
  */
 public interface Playlist extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Tracks</b></em>' reference list.
-	 * The list contents are of type {@link MusicStreamingService.Track}.
+	 * The list contents are of type {@link MusicStreamingService.AudioTrack}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Tracks</em>' reference list.
@@ -35,7 +38,7 @@ public interface Playlist extends NamedElement {
 	 * @model required="true"
 	 * @generated
 	 */
-	EList<Track> getTracks();
+	EList<AudioTrack> getTracks();
 
 	/**
 	 * Returns the value of the '<em><b>Num of tracks</b></em>' attribute.
@@ -46,7 +49,7 @@ public interface Playlist extends NamedElement {
 	 * @see #unsetNum_of_tracks()
 	 * @see #setNum_of_tracks(int)
 	 * @see MusicStreamingService.MusicStreamingServicePackage#getPlaylist_Num_of_tracks()
-	 * @model unique="false" unsettable="true" required="true" derived="true"
+	 * @model unsettable="true" required="true" derived="true"
 	 * @generated
 	 */
 	int getNum_of_tracks();
@@ -95,7 +98,7 @@ public interface Playlist extends NamedElement {
 	 * @see #unsetDuration()
 	 * @see #setDuration(int)
 	 * @see MusicStreamingService.MusicStreamingServicePackage#getPlaylist_Duration()
-	 * @model unsettable="true" required="true" derived="true" ordered="false"
+	 * @model unsettable="true" required="true" derived="true"
 	 * @generated
 	 */
 	int getDuration();
@@ -173,5 +176,13 @@ public interface Playlist extends NamedElement {
 	 * @generated
 	 */
 	EList<User> getOwners();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='\n            not tracks-&gt;isEmpty()'"
+	 * @generated
+	 */
+	boolean PlaylistMustHaveTracks(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // Playlist

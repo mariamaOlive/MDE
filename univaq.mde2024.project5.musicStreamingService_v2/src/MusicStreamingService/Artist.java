@@ -2,6 +2,9 @@
  */
 package MusicStreamingService;
 
+import java.util.Map;
+
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -23,7 +26,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see MusicStreamingService.MusicStreamingServicePackage#getArtist()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='MustHaveAlbumOrSolo'"
  * @generated
  */
 public interface Artist extends NamedElement {
@@ -35,7 +38,7 @@ public interface Artist extends NamedElement {
 	 * @return the value of the '<em>About</em>' attribute.
 	 * @see #setAbout(String)
 	 * @see MusicStreamingService.MusicStreamingServicePackage#getArtist_About()
-	 * @model default="About the artist" unique="false" required="true" ordered="false"
+	 * @model default="About the artist" required="true"
 	 * @generated
 	 */
 	String getAbout();
@@ -93,7 +96,7 @@ public interface Artist extends NamedElement {
 	 * @return the value of the '<em>Num of listeners</em>' attribute.
 	 * @see #setNum_of_listeners(int)
 	 * @see MusicStreamingService.MusicStreamingServicePackage#getArtist_Num_of_listeners()
-	 * @model unique="false" required="true" ordered="false"
+	 * @model
 	 * @generated
 	 */
 	int getNum_of_listeners();
@@ -159,5 +162,13 @@ public interface Artist extends NamedElement {
 	 * @generated
 	 */
 	void setFeatured_in(MusicTrack value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='\n            owned_albums-&gt;size()&gt;0 or owned_solos-&gt;size()&gt;0'"
+	 * @generated
+	 */
+	boolean MustHaveAlbumOrSolo(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // Artist

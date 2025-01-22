@@ -1,0 +1,55 @@
+[comment encoding = UTF-8 /]
+[module generate('https://it.univaq.disim.mde.course.project5/MSS')]
+
+[import univaq::mde2024::project5::spotify::acceleo::main::generateUser /]
+[import univaq::mde2024::project5::spotify::acceleo::main::generateAlbum /]
+[import univaq::mde2024::project5::spotify::acceleo::main::generateArtist /]
+[import univaq::mde2024::project5::spotify::acceleo::main::generatePodcast /]
+[import univaq::mde2024::project5::spotify::acceleo::main::generatePlaylist /]
+
+[template public generateElement(aStreamingService : StreamingService)]
+[comment @main/]
+	[file ('index.html', false, 'UTF-8')]
+        <html>
+        <head>
+            <title>Index - [aStreamingService.Name /]</title>
+        </head>
+        <body>
+            <h1>Welcome to [aStreamingService.Name /]!</h1>
+            <h2>Explore Our Content:</h2>
+            <ul>
+                <li><a href="users.html">Users</a></li>
+                <li><a href="artists.html">Artists</a></li>
+                <li><a href="albums.html">Albums</a></li>
+                <li><a href="podcasts.html">Podcasts</a></li>
+                <li><a href="playlists.html">Playlists</a></li>
+            </ul>
+        </body>
+        </html>
+    [/file]
+
+	[file ('users.html', false, 'UTF-8')]
+        [generateUser(aStreamingService) /]
+    [/file]
+
+
+    [file ('artists.html', false, 'UTF-8')]
+        [generateArtist(aStreamingService) /]
+    [/file]
+
+
+    [file ('albums.html', false, 'UTF-8')]
+        [generateAlbum(aStreamingService) /]
+    [/file]
+
+
+    [file ('podcasts.html', false, 'UTF-8')]
+        [generatePodcast(aStreamingService) /]
+    [/file]
+
+
+    [file ('playlists.html', false, 'UTF-8')]
+        [generatePlaylist(aStreamingService) /]
+    [/file]
+
+[/template]

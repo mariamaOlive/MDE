@@ -76,16 +76,12 @@ public class MusicStreamingServiceAdapterFactory extends AdapterFactoryImpl {
 				return createStreamingServiceAdapter();
 			}
 			@Override
-			public Adapter caseComposer(Composer object) {
-				return createComposerAdapter();
-			}
-			@Override
 			public Adapter caseArtist(Artist object) {
 				return createArtistAdapter();
 			}
 			@Override
-			public Adapter caseTrack(Track object) {
-				return createTrackAdapter();
+			public Adapter caseAudioTrack(AudioTrack object) {
+				return createAudioTrackAdapter();
 			}
 			@Override
 			public Adapter caseMusicTrack(MusicTrack object) {
@@ -112,12 +108,24 @@ public class MusicStreamingServiceAdapterFactory extends AdapterFactoryImpl {
 				return createPodcastAdapter();
 			}
 			@Override
-			public Adapter caseEpisodes(Episodes object) {
-				return createEpisodesAdapter();
+			public Adapter casePodcastEpisode(PodcastEpisode object) {
+				return createPodcastEpisodeAdapter();
 			}
 			@Override
 			public Adapter caseAlbumTrack(AlbumTrack object) {
 				return createAlbumTrackAdapter();
+			}
+			@Override
+			public Adapter caseStudioAlbum(StudioAlbum object) {
+				return createStudioAlbumAdapter();
+			}
+			@Override
+			public Adapter caseLiveAlbum(LiveAlbum object) {
+				return createLiveAlbumAdapter();
+			}
+			@Override
+			public Adapter caseConcert(Concert object) {
+				return createConcertAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -168,20 +176,6 @@ public class MusicStreamingServiceAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link MusicStreamingService.Composer <em>Composer</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see MusicStreamingService.Composer
-	 * @generated
-	 */
-	public Adapter createComposerAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link MusicStreamingService.Artist <em>Artist</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -196,16 +190,16 @@ public class MusicStreamingServiceAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link MusicStreamingService.Track <em>Track</em>}'.
+	 * Creates a new adapter for an object of class '{@link MusicStreamingService.AudioTrack <em>Audio Track</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see MusicStreamingService.Track
+	 * @see MusicStreamingService.AudioTrack
 	 * @generated
 	 */
-	public Adapter createTrackAdapter() {
+	public Adapter createAudioTrackAdapter() {
 		return null;
 	}
 
@@ -294,16 +288,16 @@ public class MusicStreamingServiceAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link MusicStreamingService.Episodes <em>Episodes</em>}'.
+	 * Creates a new adapter for an object of class '{@link MusicStreamingService.PodcastEpisode <em>Podcast Episode</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see MusicStreamingService.Episodes
+	 * @see MusicStreamingService.PodcastEpisode
 	 * @generated
 	 */
-	public Adapter createEpisodesAdapter() {
+	public Adapter createPodcastEpisodeAdapter() {
 		return null;
 	}
 
@@ -318,6 +312,48 @@ public class MusicStreamingServiceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAlbumTrackAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link MusicStreamingService.StudioAlbum <em>Studio Album</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see MusicStreamingService.StudioAlbum
+	 * @generated
+	 */
+	public Adapter createStudioAlbumAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link MusicStreamingService.LiveAlbum <em>Live Album</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see MusicStreamingService.LiveAlbum
+	 * @generated
+	 */
+	public Adapter createLiveAlbumAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link MusicStreamingService.Concert <em>Concert</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see MusicStreamingService.Concert
+	 * @generated
+	 */
+	public Adapter createConcertAdapter() {
 		return null;
 	}
 

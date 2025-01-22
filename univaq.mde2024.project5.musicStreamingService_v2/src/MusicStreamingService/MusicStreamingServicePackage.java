@@ -5,6 +5,7 @@ package MusicStreamingService;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -22,6 +23,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see MusicStreamingService.MusicStreamingServiceFactory
  * @model kind="package"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore"
  * @generated
  */
 public interface MusicStreamingServicePackage extends EPackage {
@@ -39,7 +41,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "https://it.univaq.disim.mde.course.project4/MSS";
+	String eNS_URI = "https://it.univaq.disim.mde.course.project5/MSS";
 
 	/**
 	 * The package namespace name.
@@ -150,13 +152,22 @@ public interface MusicStreamingServicePackage extends EPackage {
 	int STREAMING_SERVICE__PLAYLIST = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Concert</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STREAMING_SERVICE__CONCERT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Streaming Service</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STREAMING_SERVICE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int STREAMING_SERVICE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Streaming Service</em>' class.
@@ -168,43 +179,6 @@ public interface MusicStreamingServicePackage extends EPackage {
 	int STREAMING_SERVICE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link MusicStreamingService.impl.ComposerImpl <em>Composer</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see MusicStreamingService.impl.ComposerImpl
-	 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getComposer()
-	 * @generated
-	 */
-	int COMPOSER = 2;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPOSER__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The number of structural features of the '<em>Composer</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPOSER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Composer</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPOSER_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link MusicStreamingService.impl.ArtistImpl <em>Artist</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -212,7 +186,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getArtist()
 	 * @generated
 	 */
-	int ARTIST = 3;
+	int ARTIST = 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -296,23 +270,32 @@ public interface MusicStreamingServicePackage extends EPackage {
 	int ARTIST_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
+	 * The operation id for the '<em>Must Have Album Or Solo</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARTIST___MUST_HAVE_ALBUM_OR_SOLO__DIAGNOSTICCHAIN_MAP = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Artist</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ARTIST_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int ARTIST_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link MusicStreamingService.impl.TrackImpl <em>Track</em>}' class.
+	 * The meta object id for the '{@link MusicStreamingService.impl.AudioTrackImpl <em>Audio Track</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see MusicStreamingService.impl.TrackImpl
-	 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getTrack()
+	 * @see MusicStreamingService.impl.AudioTrackImpl
+	 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getAudioTrack()
 	 * @generated
 	 */
-	int TRACK = 4;
+	int AUDIO_TRACK = 3;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -321,7 +304,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRACK__NAME = NAMED_ELEMENT__NAME;
+	int AUDIO_TRACK__NAME = NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Duration</b></em>' attribute.
@@ -330,25 +313,25 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRACK__DURATION = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int AUDIO_TRACK__DURATION = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Track</em>' class.
+	 * The number of structural features of the '<em>Audio Track</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRACK_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int AUDIO_TRACK_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Track</em>' class.
+	 * The number of operations of the '<em>Audio Track</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRACK_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int AUDIO_TRACK_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link MusicStreamingService.impl.MusicTrackImpl <em>Music Track</em>}' class.
@@ -358,7 +341,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getMusicTrack()
 	 * @generated
 	 */
-	int MUSIC_TRACK = 5;
+	int MUSIC_TRACK = 4;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -367,7 +350,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MUSIC_TRACK__NAME = TRACK__NAME;
+	int MUSIC_TRACK__NAME = AUDIO_TRACK__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Duration</b></em>' attribute.
@@ -376,7 +359,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MUSIC_TRACK__DURATION = TRACK__DURATION;
+	int MUSIC_TRACK__DURATION = AUDIO_TRACK__DURATION;
 
 	/**
 	 * The feature id for the '<em><b>Genre</b></em>' attribute list.
@@ -385,7 +368,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MUSIC_TRACK__GENRE = TRACK_FEATURE_COUNT + 0;
+	int MUSIC_TRACK__GENRE = AUDIO_TRACK_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Lyrics</b></em>' attribute.
@@ -394,7 +377,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MUSIC_TRACK__LYRICS = TRACK_FEATURE_COUNT + 1;
+	int MUSIC_TRACK__LYRICS = AUDIO_TRACK_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Featured artist</b></em>' reference list.
@@ -403,7 +386,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MUSIC_TRACK__FEATURED_ARTIST = TRACK_FEATURE_COUNT + 2;
+	int MUSIC_TRACK__FEATURED_ARTIST = AUDIO_TRACK_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Music Track</em>' class.
@@ -412,7 +395,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MUSIC_TRACK_FEATURE_COUNT = TRACK_FEATURE_COUNT + 3;
+	int MUSIC_TRACK_FEATURE_COUNT = AUDIO_TRACK_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Music Track</em>' class.
@@ -421,7 +404,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MUSIC_TRACK_OPERATION_COUNT = TRACK_OPERATION_COUNT + 0;
+	int MUSIC_TRACK_OPERATION_COUNT = AUDIO_TRACK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link MusicStreamingService.impl.SingleTrackImpl <em>Single Track</em>}' class.
@@ -431,7 +414,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getSingleTrack()
 	 * @generated
 	 */
-	int SINGLE_TRACK = 6;
+	int SINGLE_TRACK = 5;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -513,7 +496,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getAlbum()
 	 * @generated
 	 */
-	int ALBUM = 7;
+	int ALBUM = 6;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -570,13 +553,22 @@ public interface MusicStreamingServicePackage extends EPackage {
 	int ALBUM_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
+	 * The operation id for the '<em>Calculate Total Duration</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALBUM___CALCULATE_TOTAL_DURATION = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Album</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ALBUM_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int ALBUM_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link MusicStreamingService.impl.UserImpl <em>User</em>}' class.
@@ -586,7 +578,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getUser()
 	 * @generated
 	 */
-	int USER = 8;
+	int USER = 7;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -661,13 +653,22 @@ public interface MusicStreamingServicePackage extends EPackage {
 	int USER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
+	 * The operation id for the '<em>Get Podcasts By Tag</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER___GET_PODCASTS_BY_TAG__PODCASTCATEGORY = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>User</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int USER_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int USER_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link MusicStreamingService.impl.PlaylistImpl <em>Playlist</em>}' class.
@@ -677,7 +678,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getPlaylist()
 	 * @generated
 	 */
-	int PLAYLIST = 9;
+	int PLAYLIST = 8;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -743,13 +744,22 @@ public interface MusicStreamingServicePackage extends EPackage {
 	int PLAYLIST_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
+	 * The operation id for the '<em>Playlist Must Have Tracks</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLAYLIST___PLAYLIST_MUST_HAVE_TRACKS__DIAGNOSTICCHAIN_MAP = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Playlist</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PLAYLIST_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int PLAYLIST_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link MusicStreamingService.impl.PodcastImpl <em>Podcast</em>}' class.
@@ -759,7 +769,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getPodcast()
 	 * @generated
 	 */
-	int PODCAST = 10;
+	int PODCAST = 9;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -771,13 +781,13 @@ public interface MusicStreamingServicePackage extends EPackage {
 	int PODCAST__NAME = NAMED_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Tag</b></em>' attribute list.
+	 * The feature id for the '<em><b>Category</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PODCAST__TAG = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int PODCAST__CATEGORY = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Rating</b></em>' attribute.
@@ -825,23 +835,32 @@ public interface MusicStreamingServicePackage extends EPackage {
 	int PODCAST_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
+	 * The operation id for the '<em>Podcast Must Have Episodes</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PODCAST___PODCAST_MUST_HAVE_EPISODES__DIAGNOSTICCHAIN_MAP = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Podcast</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PODCAST_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int PODCAST_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link MusicStreamingService.impl.EpisodesImpl <em>Episodes</em>}' class.
+	 * The meta object id for the '{@link MusicStreamingService.impl.PodcastEpisodeImpl <em>Podcast Episode</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see MusicStreamingService.impl.EpisodesImpl
-	 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getEpisodes()
+	 * @see MusicStreamingService.impl.PodcastEpisodeImpl
+	 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getPodcastEpisode()
 	 * @generated
 	 */
-	int EPISODES = 11;
+	int PODCAST_EPISODE = 10;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -850,7 +869,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPISODES__NAME = TRACK__NAME;
+	int PODCAST_EPISODE__NAME = AUDIO_TRACK__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Duration</b></em>' attribute.
@@ -859,7 +878,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPISODES__DURATION = TRACK__DURATION;
+	int PODCAST_EPISODE__DURATION = AUDIO_TRACK__DURATION;
 
 	/**
 	 * The feature id for the '<em><b>Date created</b></em>' attribute.
@@ -868,7 +887,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPISODES__DATE_CREATED = TRACK_FEATURE_COUNT + 0;
+	int PODCAST_EPISODE__DATE_CREATED = AUDIO_TRACK_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Transcript</b></em>' attribute.
@@ -877,7 +896,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPISODES__TRANSCRIPT = TRACK_FEATURE_COUNT + 1;
+	int PODCAST_EPISODE__TRANSCRIPT = AUDIO_TRACK_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -886,25 +905,25 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EPISODES__DESCRIPTION = TRACK_FEATURE_COUNT + 2;
+	int PODCAST_EPISODE__DESCRIPTION = AUDIO_TRACK_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Episodes</em>' class.
+	 * The number of structural features of the '<em>Podcast Episode</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EPISODES_FEATURE_COUNT = TRACK_FEATURE_COUNT + 3;
+	int PODCAST_EPISODE_FEATURE_COUNT = AUDIO_TRACK_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of operations of the '<em>Episodes</em>' class.
+	 * The number of operations of the '<em>Podcast Episode</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EPISODES_OPERATION_COUNT = TRACK_OPERATION_COUNT + 0;
+	int PODCAST_EPISODE_OPERATION_COUNT = AUDIO_TRACK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link MusicStreamingService.impl.AlbumTrackImpl <em>Album Track</em>}' class.
@@ -914,7 +933,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getAlbumTrack()
 	 * @generated
 	 */
-	int ALBUM_TRACK = 12;
+	int ALBUM_TRACK = 11;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -989,14 +1008,260 @@ public interface MusicStreamingServicePackage extends EPackage {
 	int ALBUM_TRACK_OPERATION_COUNT = MUSIC_TRACK_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link MusicStreamingService.PodcastTag <em>Podcast Tag</em>}' enum.
+	 * The meta object id for the '{@link MusicStreamingService.impl.StudioAlbumImpl <em>Studio Album</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see MusicStreamingService.PodcastTag
-	 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getPodcastTag()
+	 * @see MusicStreamingService.impl.StudioAlbumImpl
+	 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getStudioAlbum()
 	 * @generated
 	 */
-	int PODCAST_TAG = 13;
+	int STUDIO_ALBUM = 12;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDIO_ALBUM__NAME = ALBUM__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Tracks</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDIO_ALBUM__TRACKS = ALBUM__TRACKS;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDIO_ALBUM__DURATION = ALBUM__DURATION;
+
+	/**
+	 * The feature id for the '<em><b>Img url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDIO_ALBUM__IMG_URL = ALBUM__IMG_URL;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDIO_ALBUM__OWNER = ALBUM__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Recording Studio</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDIO_ALBUM__RECORDING_STUDIO = ALBUM_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Studio Album</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDIO_ALBUM_FEATURE_COUNT = ALBUM_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Calculate Total Duration</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDIO_ALBUM___CALCULATE_TOTAL_DURATION = ALBUM___CALCULATE_TOTAL_DURATION;
+
+	/**
+	 * The number of operations of the '<em>Studio Album</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDIO_ALBUM_OPERATION_COUNT = ALBUM_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link MusicStreamingService.impl.LiveAlbumImpl <em>Live Album</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see MusicStreamingService.impl.LiveAlbumImpl
+	 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getLiveAlbum()
+	 * @generated
+	 */
+	int LIVE_ALBUM = 13;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIVE_ALBUM__NAME = ALBUM__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Tracks</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIVE_ALBUM__TRACKS = ALBUM__TRACKS;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIVE_ALBUM__DURATION = ALBUM__DURATION;
+
+	/**
+	 * The feature id for the '<em><b>Img url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIVE_ALBUM__IMG_URL = ALBUM__IMG_URL;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIVE_ALBUM__OWNER = ALBUM__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Event Location</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIVE_ALBUM__EVENT_LOCATION = ALBUM_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Live Album</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIVE_ALBUM_FEATURE_COUNT = ALBUM_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Calculate Total Duration</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIVE_ALBUM___CALCULATE_TOTAL_DURATION = ALBUM___CALCULATE_TOTAL_DURATION;
+
+	/**
+	 * The number of operations of the '<em>Live Album</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIVE_ALBUM_OPERATION_COUNT = ALBUM_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link MusicStreamingService.impl.ConcertImpl <em>Concert</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see MusicStreamingService.impl.ConcertImpl
+	 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getConcert()
+	 * @generated
+	 */
+	int CONCERT = 14;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERT__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERT__DATE = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Location</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERT__LOCATION = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Artists</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERT__ARTISTS = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Concert</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Concert</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link MusicStreamingService.PodcastCategory <em>Podcast Category</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see MusicStreamingService.PodcastCategory
+	 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getPodcastCategory()
+	 * @generated
+	 */
+	int PODCAST_CATEGORY = 15;
 
 	/**
 	 * The meta object id for the '{@link MusicStreamingService.Order <em>Order</em>}' enum.
@@ -1006,7 +1271,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getOrder()
 	 * @generated
 	 */
-	int ORDER = 14;
+	int ORDER = 16;
 
 	/**
 	 * The meta object id for the '{@link MusicStreamingService.MusicGenre <em>Music Genre</em>}' enum.
@@ -1016,7 +1281,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 	 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getMusicGenre()
 	 * @generated
 	 */
-	int MUSIC_GENRE = 15;
+	int MUSIC_GENRE = 17;
 
 
 	/**
@@ -1095,14 +1360,15 @@ public interface MusicStreamingServicePackage extends EPackage {
 	EReference getStreamingService_Playlist();
 
 	/**
-	 * Returns the meta object for class '{@link MusicStreamingService.Composer <em>Composer</em>}'.
+	 * Returns the meta object for the containment reference list '{@link MusicStreamingService.StreamingService#getConcert <em>Concert</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Composer</em>'.
-	 * @see MusicStreamingService.Composer
+	 * @return the meta object for the containment reference list '<em>Concert</em>'.
+	 * @see MusicStreamingService.StreamingService#getConcert()
+	 * @see #getStreamingService()
 	 * @generated
 	 */
-	EClass getComposer();
+	EReference getStreamingService_Concert();
 
 	/**
 	 * Returns the meta object for class '{@link MusicStreamingService.Artist <em>Artist</em>}'.
@@ -1192,25 +1458,35 @@ public interface MusicStreamingServicePackage extends EPackage {
 	EReference getArtist_Featured_in();
 
 	/**
-	 * Returns the meta object for class '{@link MusicStreamingService.Track <em>Track</em>}'.
+	 * Returns the meta object for the '{@link MusicStreamingService.Artist#MustHaveAlbumOrSolo(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Must Have Album Or Solo</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Track</em>'.
-	 * @see MusicStreamingService.Track
+	 * @return the meta object for the '<em>Must Have Album Or Solo</em>' operation.
+	 * @see MusicStreamingService.Artist#MustHaveAlbumOrSolo(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	EClass getTrack();
+	EOperation getArtist__MustHaveAlbumOrSolo__DiagnosticChain_Map();
 
 	/**
-	 * Returns the meta object for the attribute '{@link MusicStreamingService.Track#getDuration <em>Duration</em>}'.
+	 * Returns the meta object for class '{@link MusicStreamingService.AudioTrack <em>Audio Track</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Audio Track</em>'.
+	 * @see MusicStreamingService.AudioTrack
+	 * @generated
+	 */
+	EClass getAudioTrack();
+
+	/**
+	 * Returns the meta object for the attribute '{@link MusicStreamingService.AudioTrack#getDuration <em>Duration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Duration</em>'.
-	 * @see MusicStreamingService.Track#getDuration()
-	 * @see #getTrack()
+	 * @see MusicStreamingService.AudioTrack#getDuration()
+	 * @see #getAudioTrack()
 	 * @generated
 	 */
-	EAttribute getTrack_Duration();
+	EAttribute getAudioTrack_Duration();
 
 	/**
 	 * Returns the meta object for class '{@link MusicStreamingService.MusicTrack <em>Music Track</em>}'.
@@ -1331,6 +1607,16 @@ public interface MusicStreamingServicePackage extends EPackage {
 	EReference getAlbum_Owner();
 
 	/**
+	 * Returns the meta object for the '{@link MusicStreamingService.Album#calculateTotalDuration() <em>Calculate Total Duration</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Calculate Total Duration</em>' operation.
+	 * @see MusicStreamingService.Album#calculateTotalDuration()
+	 * @generated
+	 */
+	EOperation getAlbum__CalculateTotalDuration();
+
+	/**
 	 * Returns the meta object for class '{@link MusicStreamingService.User <em>User</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1407,6 +1693,16 @@ public interface MusicStreamingServicePackage extends EPackage {
 	EReference getUser_Subscribed_podcast();
 
 	/**
+	 * Returns the meta object for the '{@link MusicStreamingService.User#getPodcastsByTag(MusicStreamingService.PodcastCategory) <em>Get Podcasts By Tag</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Podcasts By Tag</em>' operation.
+	 * @see MusicStreamingService.User#getPodcastsByTag(MusicStreamingService.PodcastCategory)
+	 * @generated
+	 */
+	EOperation getUser__GetPodcastsByTag__PodcastCategory();
+
+	/**
 	 * Returns the meta object for class '{@link MusicStreamingService.Playlist <em>Playlist</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1472,6 +1768,16 @@ public interface MusicStreamingServicePackage extends EPackage {
 	EReference getPlaylist_Owners();
 
 	/**
+	 * Returns the meta object for the '{@link MusicStreamingService.Playlist#PlaylistMustHaveTracks(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Playlist Must Have Tracks</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Playlist Must Have Tracks</em>' operation.
+	 * @see MusicStreamingService.Playlist#PlaylistMustHaveTracks(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getPlaylist__PlaylistMustHaveTracks__DiagnosticChain_Map();
+
+	/**
 	 * Returns the meta object for class '{@link MusicStreamingService.Podcast <em>Podcast</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1482,15 +1788,15 @@ public interface MusicStreamingServicePackage extends EPackage {
 	EClass getPodcast();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link MusicStreamingService.Podcast#getTag <em>Tag</em>}'.
+	 * Returns the meta object for the attribute list '{@link MusicStreamingService.Podcast#getCategory <em>Category</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Tag</em>'.
-	 * @see MusicStreamingService.Podcast#getTag()
+	 * @return the meta object for the attribute list '<em>Category</em>'.
+	 * @see MusicStreamingService.Podcast#getCategory()
 	 * @see #getPodcast()
 	 * @generated
 	 */
-	EAttribute getPodcast_Tag();
+	EAttribute getPodcast_Category();
 
 	/**
 	 * Returns the meta object for the attribute '{@link MusicStreamingService.Podcast#getRating <em>Rating</em>}'.
@@ -1537,47 +1843,57 @@ public interface MusicStreamingServicePackage extends EPackage {
 	EReference getPodcast_Followers();
 
 	/**
-	 * Returns the meta object for class '{@link MusicStreamingService.Episodes <em>Episodes</em>}'.
+	 * Returns the meta object for the '{@link MusicStreamingService.Podcast#PodcastMustHaveEpisodes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Podcast Must Have Episodes</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Episodes</em>'.
-	 * @see MusicStreamingService.Episodes
+	 * @return the meta object for the '<em>Podcast Must Have Episodes</em>' operation.
+	 * @see MusicStreamingService.Podcast#PodcastMustHaveEpisodes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	EClass getEpisodes();
+	EOperation getPodcast__PodcastMustHaveEpisodes__DiagnosticChain_Map();
 
 	/**
-	 * Returns the meta object for the attribute '{@link MusicStreamingService.Episodes#getDate_created <em>Date created</em>}'.
+	 * Returns the meta object for class '{@link MusicStreamingService.PodcastEpisode <em>Podcast Episode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Podcast Episode</em>'.
+	 * @see MusicStreamingService.PodcastEpisode
+	 * @generated
+	 */
+	EClass getPodcastEpisode();
+
+	/**
+	 * Returns the meta object for the attribute '{@link MusicStreamingService.PodcastEpisode#getDate_created <em>Date created</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Date created</em>'.
-	 * @see MusicStreamingService.Episodes#getDate_created()
-	 * @see #getEpisodes()
+	 * @see MusicStreamingService.PodcastEpisode#getDate_created()
+	 * @see #getPodcastEpisode()
 	 * @generated
 	 */
-	EAttribute getEpisodes_Date_created();
+	EAttribute getPodcastEpisode_Date_created();
 
 	/**
-	 * Returns the meta object for the attribute '{@link MusicStreamingService.Episodes#getTranscript <em>Transcript</em>}'.
+	 * Returns the meta object for the attribute '{@link MusicStreamingService.PodcastEpisode#getTranscript <em>Transcript</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Transcript</em>'.
-	 * @see MusicStreamingService.Episodes#getTranscript()
-	 * @see #getEpisodes()
+	 * @see MusicStreamingService.PodcastEpisode#getTranscript()
+	 * @see #getPodcastEpisode()
 	 * @generated
 	 */
-	EAttribute getEpisodes_Transcript();
+	EAttribute getPodcastEpisode_Transcript();
 
 	/**
-	 * Returns the meta object for the attribute '{@link MusicStreamingService.Episodes#getDescription <em>Description</em>}'.
+	 * Returns the meta object for the attribute '{@link MusicStreamingService.PodcastEpisode#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see MusicStreamingService.Episodes#getDescription()
-	 * @see #getEpisodes()
+	 * @see MusicStreamingService.PodcastEpisode#getDescription()
+	 * @see #getPodcastEpisode()
 	 * @generated
 	 */
-	EAttribute getEpisodes_Description();
+	EAttribute getPodcastEpisode_Description();
 
 	/**
 	 * Returns the meta object for class '{@link MusicStreamingService.AlbumTrack <em>Album Track</em>}'.
@@ -1601,14 +1917,99 @@ public interface MusicStreamingServicePackage extends EPackage {
 	EAttribute getAlbumTrack_Position();
 
 	/**
-	 * Returns the meta object for enum '{@link MusicStreamingService.PodcastTag <em>Podcast Tag</em>}'.
+	 * Returns the meta object for class '{@link MusicStreamingService.StudioAlbum <em>Studio Album</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Podcast Tag</em>'.
-	 * @see MusicStreamingService.PodcastTag
+	 * @return the meta object for class '<em>Studio Album</em>'.
+	 * @see MusicStreamingService.StudioAlbum
 	 * @generated
 	 */
-	EEnum getPodcastTag();
+	EClass getStudioAlbum();
+
+	/**
+	 * Returns the meta object for the attribute '{@link MusicStreamingService.StudioAlbum#getRecordingStudio <em>Recording Studio</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Recording Studio</em>'.
+	 * @see MusicStreamingService.StudioAlbum#getRecordingStudio()
+	 * @see #getStudioAlbum()
+	 * @generated
+	 */
+	EAttribute getStudioAlbum_RecordingStudio();
+
+	/**
+	 * Returns the meta object for class '{@link MusicStreamingService.LiveAlbum <em>Live Album</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Live Album</em>'.
+	 * @see MusicStreamingService.LiveAlbum
+	 * @generated
+	 */
+	EClass getLiveAlbum();
+
+	/**
+	 * Returns the meta object for the attribute '{@link MusicStreamingService.LiveAlbum#getEventLocation <em>Event Location</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Event Location</em>'.
+	 * @see MusicStreamingService.LiveAlbum#getEventLocation()
+	 * @see #getLiveAlbum()
+	 * @generated
+	 */
+	EAttribute getLiveAlbum_EventLocation();
+
+	/**
+	 * Returns the meta object for class '{@link MusicStreamingService.Concert <em>Concert</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Concert</em>'.
+	 * @see MusicStreamingService.Concert
+	 * @generated
+	 */
+	EClass getConcert();
+
+	/**
+	 * Returns the meta object for the attribute '{@link MusicStreamingService.Concert#getDate <em>Date</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Date</em>'.
+	 * @see MusicStreamingService.Concert#getDate()
+	 * @see #getConcert()
+	 * @generated
+	 */
+	EAttribute getConcert_Date();
+
+	/**
+	 * Returns the meta object for the attribute '{@link MusicStreamingService.Concert#getLocation <em>Location</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Location</em>'.
+	 * @see MusicStreamingService.Concert#getLocation()
+	 * @see #getConcert()
+	 * @generated
+	 */
+	EAttribute getConcert_Location();
+
+	/**
+	 * Returns the meta object for the reference list '{@link MusicStreamingService.Concert#getArtists <em>Artists</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Artists</em>'.
+	 * @see MusicStreamingService.Concert#getArtists()
+	 * @see #getConcert()
+	 * @generated
+	 */
+	EReference getConcert_Artists();
+
+	/**
+	 * Returns the meta object for enum '{@link MusicStreamingService.PodcastCategory <em>Podcast Category</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Podcast Category</em>'.
+	 * @see MusicStreamingService.PodcastCategory
+	 * @generated
+	 */
+	EEnum getPodcastCategory();
 
 	/**
 	 * Returns the meta object for enum '{@link MusicStreamingService.Order <em>Order</em>}'.
@@ -1714,14 +2115,12 @@ public interface MusicStreamingServicePackage extends EPackage {
 		EReference STREAMING_SERVICE__PLAYLIST = eINSTANCE.getStreamingService_Playlist();
 
 		/**
-		 * The meta object literal for the '{@link MusicStreamingService.impl.ComposerImpl <em>Composer</em>}' class.
+		 * The meta object literal for the '<em><b>Concert</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see MusicStreamingService.impl.ComposerImpl
-		 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getComposer()
 		 * @generated
 		 */
-		EClass COMPOSER = eINSTANCE.getComposer();
+		EReference STREAMING_SERVICE__CONCERT = eINSTANCE.getStreamingService_Concert();
 
 		/**
 		 * The meta object literal for the '{@link MusicStreamingService.impl.ArtistImpl <em>Artist</em>}' class.
@@ -1790,14 +2189,22 @@ public interface MusicStreamingServicePackage extends EPackage {
 		EReference ARTIST__FEATURED_IN = eINSTANCE.getArtist_Featured_in();
 
 		/**
-		 * The meta object literal for the '{@link MusicStreamingService.impl.TrackImpl <em>Track</em>}' class.
+		 * The meta object literal for the '<em><b>Must Have Album Or Solo</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see MusicStreamingService.impl.TrackImpl
-		 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getTrack()
 		 * @generated
 		 */
-		EClass TRACK = eINSTANCE.getTrack();
+		EOperation ARTIST___MUST_HAVE_ALBUM_OR_SOLO__DIAGNOSTICCHAIN_MAP = eINSTANCE.getArtist__MustHaveAlbumOrSolo__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '{@link MusicStreamingService.impl.AudioTrackImpl <em>Audio Track</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see MusicStreamingService.impl.AudioTrackImpl
+		 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getAudioTrack()
+		 * @generated
+		 */
+		EClass AUDIO_TRACK = eINSTANCE.getAudioTrack();
 
 		/**
 		 * The meta object literal for the '<em><b>Duration</b></em>' attribute feature.
@@ -1805,7 +2212,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TRACK__DURATION = eINSTANCE.getTrack_Duration();
+		EAttribute AUDIO_TRACK__DURATION = eINSTANCE.getAudioTrack_Duration();
 
 		/**
 		 * The meta object literal for the '{@link MusicStreamingService.impl.MusicTrackImpl <em>Music Track</em>}' class.
@@ -1902,6 +2309,14 @@ public interface MusicStreamingServicePackage extends EPackage {
 		EReference ALBUM__OWNER = eINSTANCE.getAlbum_Owner();
 
 		/**
+		 * The meta object literal for the '<em><b>Calculate Total Duration</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ALBUM___CALCULATE_TOTAL_DURATION = eINSTANCE.getAlbum__CalculateTotalDuration();
+
+		/**
 		 * The meta object literal for the '{@link MusicStreamingService.impl.UserImpl <em>User</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1960,6 +2375,14 @@ public interface MusicStreamingServicePackage extends EPackage {
 		EReference USER__SUBSCRIBED_PODCAST = eINSTANCE.getUser_Subscribed_podcast();
 
 		/**
+		 * The meta object literal for the '<em><b>Get Podcasts By Tag</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation USER___GET_PODCASTS_BY_TAG__PODCASTCATEGORY = eINSTANCE.getUser__GetPodcastsByTag__PodcastCategory();
+
+		/**
 		 * The meta object literal for the '{@link MusicStreamingService.impl.PlaylistImpl <em>Playlist</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2010,6 +2433,14 @@ public interface MusicStreamingServicePackage extends EPackage {
 		EReference PLAYLIST__OWNERS = eINSTANCE.getPlaylist_Owners();
 
 		/**
+		 * The meta object literal for the '<em><b>Playlist Must Have Tracks</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PLAYLIST___PLAYLIST_MUST_HAVE_TRACKS__DIAGNOSTICCHAIN_MAP = eINSTANCE.getPlaylist__PlaylistMustHaveTracks__DiagnosticChain_Map();
+
+		/**
 		 * The meta object literal for the '{@link MusicStreamingService.impl.PodcastImpl <em>Podcast</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2020,12 +2451,12 @@ public interface MusicStreamingServicePackage extends EPackage {
 		EClass PODCAST = eINSTANCE.getPodcast();
 
 		/**
-		 * The meta object literal for the '<em><b>Tag</b></em>' attribute list feature.
+		 * The meta object literal for the '<em><b>Category</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PODCAST__TAG = eINSTANCE.getPodcast_Tag();
+		EAttribute PODCAST__CATEGORY = eINSTANCE.getPodcast_Category();
 
 		/**
 		 * The meta object literal for the '<em><b>Rating</b></em>' attribute feature.
@@ -2060,14 +2491,22 @@ public interface MusicStreamingServicePackage extends EPackage {
 		EReference PODCAST__FOLLOWERS = eINSTANCE.getPodcast_Followers();
 
 		/**
-		 * The meta object literal for the '{@link MusicStreamingService.impl.EpisodesImpl <em>Episodes</em>}' class.
+		 * The meta object literal for the '<em><b>Podcast Must Have Episodes</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see MusicStreamingService.impl.EpisodesImpl
-		 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getEpisodes()
 		 * @generated
 		 */
-		EClass EPISODES = eINSTANCE.getEpisodes();
+		EOperation PODCAST___PODCAST_MUST_HAVE_EPISODES__DIAGNOSTICCHAIN_MAP = eINSTANCE.getPodcast__PodcastMustHaveEpisodes__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '{@link MusicStreamingService.impl.PodcastEpisodeImpl <em>Podcast Episode</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see MusicStreamingService.impl.PodcastEpisodeImpl
+		 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getPodcastEpisode()
+		 * @generated
+		 */
+		EClass PODCAST_EPISODE = eINSTANCE.getPodcastEpisode();
 
 		/**
 		 * The meta object literal for the '<em><b>Date created</b></em>' attribute feature.
@@ -2075,7 +2514,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute EPISODES__DATE_CREATED = eINSTANCE.getEpisodes_Date_created();
+		EAttribute PODCAST_EPISODE__DATE_CREATED = eINSTANCE.getPodcastEpisode_Date_created();
 
 		/**
 		 * The meta object literal for the '<em><b>Transcript</b></em>' attribute feature.
@@ -2083,7 +2522,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute EPISODES__TRANSCRIPT = eINSTANCE.getEpisodes_Transcript();
+		EAttribute PODCAST_EPISODE__TRANSCRIPT = eINSTANCE.getPodcastEpisode_Transcript();
 
 		/**
 		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
@@ -2091,7 +2530,7 @@ public interface MusicStreamingServicePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute EPISODES__DESCRIPTION = eINSTANCE.getEpisodes_Description();
+		EAttribute PODCAST_EPISODE__DESCRIPTION = eINSTANCE.getPodcastEpisode_Description();
 
 		/**
 		 * The meta object literal for the '{@link MusicStreamingService.impl.AlbumTrackImpl <em>Album Track</em>}' class.
@@ -2112,14 +2551,84 @@ public interface MusicStreamingServicePackage extends EPackage {
 		EAttribute ALBUM_TRACK__POSITION = eINSTANCE.getAlbumTrack_Position();
 
 		/**
-		 * The meta object literal for the '{@link MusicStreamingService.PodcastTag <em>Podcast Tag</em>}' enum.
+		 * The meta object literal for the '{@link MusicStreamingService.impl.StudioAlbumImpl <em>Studio Album</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see MusicStreamingService.PodcastTag
-		 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getPodcastTag()
+		 * @see MusicStreamingService.impl.StudioAlbumImpl
+		 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getStudioAlbum()
 		 * @generated
 		 */
-		EEnum PODCAST_TAG = eINSTANCE.getPodcastTag();
+		EClass STUDIO_ALBUM = eINSTANCE.getStudioAlbum();
+
+		/**
+		 * The meta object literal for the '<em><b>Recording Studio</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STUDIO_ALBUM__RECORDING_STUDIO = eINSTANCE.getStudioAlbum_RecordingStudio();
+
+		/**
+		 * The meta object literal for the '{@link MusicStreamingService.impl.LiveAlbumImpl <em>Live Album</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see MusicStreamingService.impl.LiveAlbumImpl
+		 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getLiveAlbum()
+		 * @generated
+		 */
+		EClass LIVE_ALBUM = eINSTANCE.getLiveAlbum();
+
+		/**
+		 * The meta object literal for the '<em><b>Event Location</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LIVE_ALBUM__EVENT_LOCATION = eINSTANCE.getLiveAlbum_EventLocation();
+
+		/**
+		 * The meta object literal for the '{@link MusicStreamingService.impl.ConcertImpl <em>Concert</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see MusicStreamingService.impl.ConcertImpl
+		 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getConcert()
+		 * @generated
+		 */
+		EClass CONCERT = eINSTANCE.getConcert();
+
+		/**
+		 * The meta object literal for the '<em><b>Date</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONCERT__DATE = eINSTANCE.getConcert_Date();
+
+		/**
+		 * The meta object literal for the '<em><b>Location</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONCERT__LOCATION = eINSTANCE.getConcert_Location();
+
+		/**
+		 * The meta object literal for the '<em><b>Artists</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONCERT__ARTISTS = eINSTANCE.getConcert_Artists();
+
+		/**
+		 * The meta object literal for the '{@link MusicStreamingService.PodcastCategory <em>Podcast Category</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see MusicStreamingService.PodcastCategory
+		 * @see MusicStreamingService.impl.MusicStreamingServicePackageImpl#getPodcastCategory()
+		 * @generated
+		 */
+		EEnum PODCAST_CATEGORY = eINSTANCE.getPodcastCategory();
 
 		/**
 		 * The meta object literal for the '{@link MusicStreamingService.Order <em>Order</em>}' enum.
